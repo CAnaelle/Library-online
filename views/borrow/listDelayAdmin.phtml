@@ -1,0 +1,37 @@
+<h2>Liste des retards</h2>
+<?php if(isset($messageAdmin)): ?>
+    <p class="message"><?= $messageAdmin ?></p>
+<?php endif; ?>
+<table class="tableBase adminTable delayAdminTable">
+    <thead>
+        <tr>
+            <th>Date de prêt</th>
+            <th>Fin du prêt</th>
+            <th>Titre</th>
+            <th>Auteur(s)</th>
+            <th>Statut</th>
+            <th>Nom Prénom</th>
+            <th>N° lecteur</th>
+            <th>Tél</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if(isset($delay)): ?>    
+    <?php foreach($delay as $retard): ?>
+        <tr class="row<?=$retard["id"] ?>">
+            <td data-label='Date de réservation' class="infosTd"><?= $retard["date_deb_pret"] ?></td>
+            <td data-label='Date de fin de réservation' class="infosTd"><?= $retard["date_fin_pret"] ?></td>
+            <td data-label='Titre' class="infosTd"><?= $retard["titre"] ?>, Tome <?= $retard["tome"] ?></td>
+            <td data-label='Auteur(s)' class="infosTd"><?= $retard["auteur"] ?></td>
+            <td data-label='Statut' class="infosTd"><?= $retard["statut"] ?></td>
+            <td data-label='Nom Prénom' class="infosTd"><?= $retard["Nom"] ?> <?= $retard["Prenom"] ?></td>
+            <td data-label='Numéro étudiant/lecteur' class="infosTd"><?= $retard["numero_etu"] ?></td>
+            <td data-label='Téléphone' class="infosTd"><?= $retard["tel"] ?></td>
+            <td data-label='Email' class="infosTd"><a href="mailto: <?= $retard["email"] ?>"><i class="fa-solid fa-envelope"></i></a></td>
+        </tr>
+    <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+</table>    
+

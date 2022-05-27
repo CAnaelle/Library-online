@@ -1,0 +1,52 @@
+<h2>Liste des messages de contact</h2>
+<p id="messageContact" class="message infoBooking"></p> <!-- pour afficher le message à partir de js -->
+<?php if(isset($messageAdmin)): ?>
+    <p class="message"><?= $messageAdmin ?></p>
+<?php endif; ?>
+<form method="POST" action="index.php?action=contactMessagesAdmin" class="formBase formAdmin">
+        <fieldset>
+            <legend>Date</legend>
+            <p>
+                <label for="dateFirst">Date de début</label>
+                <input id="dateFirst" type="date" name="dateFirst"/>
+            </p>
+            <p>
+                <label for="dateSecond">Date de fin</label>
+                <input id="dateSecond" type="date" name="dateSecond"/>
+            </p>
+        </fieldset>
+        <button type="submit" class="buttonForm add">Rechercher</button>
+        <a href="index.php?action=admin" class="buttonForm cancel">Annuler</a>
+</form>
+<table class="tableBase adminTable contactMessagesTable">
+    <thead>
+        <tr>
+            <th>Date d'envoi</th>
+            <th>Sujet</th>
+            <th>Message</th>
+            <th>Nom Prénom</th>
+            <th>Tél</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if(isset($messages)): ?>    
+    <?php foreach($messages as $message): ?>
+        <tr class="row<?=$message["id"] ?>">
+            <td data-label='Date' class="infosTd"><?= $message["date"] ?></td>
+            <td data-label='Sujet' class="infosTd"><?= $message["sujet_message"] ?></td>
+            <td data-label='Message' class="infosTd contactMessage"><?= $message["message"] ?></td>
+            <td data-label='Nom Prénom' class="infosTd"><?= $message["Nom"] ?> <?= $message["Prenom"] ?></td>
+            <td data-label='Téléphone' class="infosTd"><?= $message["tel"] ?></td>
+            <td data-label='Email' class="infosTd"><a href="mailto: <?= $message["email"] ?>"><i class="fa-solid fa-envelope"></i></a></td>
+            <td data-label='' class="infosTd">
+                <span class="deleteMessage" data-idmess="<?=$message["id"] ?>">
+                <i class="fa-solid fa-xmark"></i>
+                </span>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+</table>

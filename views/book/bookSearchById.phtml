@@ -1,0 +1,78 @@
+<div id="menuSearch" class="menuSearch">
+    <form method="GET" action="index.php" class="form">
+        <div class="position">
+            <input type="search" id="researchWords" name="bookList" class="inputSearch" autocomplete="off" placeholder="Rechercher un livre"/><!--autocomplete permet d'enlever les recherches passées qui s'affiche au-dessus de ma liste de recherche-->
+            <div id="targetResearch" class="result hide"></div>
+        </div>
+        <button type="submit" class="validate">Recherche avancée</button>
+    </form>
+</div>
+<section class="bookDesc">
+<?php if(isset($messageUser)): ?>
+    <p id="messageUser infoBooking" class="message"><?= $messageUser ?></p>
+<?php endif; ?>
+    <div class="headBook clearfix">
+        <?php if($userController -> is_connect()):?>
+        <input type="checkbox" name="wishlistArray" id="<?= $book_result['id']?>" value="<?= $book_result['id']?>" class="wishlist wishlist--floating"/><label for="<?= $book_result['id']?>" class="wishlist--floating"></label>
+        <?php endif; ?>
+        <h2><?= $book_result["titre"] ?><?php if($book_result["tome"] != null): ?> Tome <?php endif; ?><?= $book_result["tome"] ?></h2>
+        <strong><?= $book_result["auteur"] ?></strong>
+        <div class="clearfix">
+            <?php if(!empty($book_result["image"])): ?>
+                <div class="imgBook"><img src="public/assets/images/<?= $book_result["image"] ?>" alt="<?= $book_result["image"] ?>" class="imgBook__img"/></div>
+            <?php endif; ?>
+                <p><span>Résumé: </span><?= $book_result["resume"] ?></p>
+                <p><span>Genre: </span><?= $book_result["genre"] ?></p>
+                <div>
+                    <a href="index.php?action=reserve&book=<?= $book_result['id']?>" class="buttons__button buttons__button--booking"> Réserver</a>
+                </div>
+        </div>
+    </div>
+    <div class="descriptionBook">
+        <h3>Description du document</h3>
+        <ul>
+            <li>Titre(s): <?= $book_result["titre"] ?></li>
+            <li>Auteur(s): <?= $book_result["auteur"] ?></li>
+            <li>Nombre de pages: <?= $book_result["nbre_pages"] ?></li>
+            <li>Format: <?= $book_result["format"] ?></li>
+            <li>Collection: <?= $book_result["collection"] ?></li>
+            <li>Date de parution: <?= $book_result["date_parution"] ?></li>
+            <li>Catégorie(s): <?= $book_result["categorie"] ?></li>
+            <li>Genre: <?= $book_result["genre"] ?></li>
+            <li>ISBN: <?= $book_result["isbn"] ?></li>
+            <li>Editeur(s): <?= $book_result["editeur"] ?></li>
+        </ul>
+    </div>
+    <div class="localisation">
+        <h3>Où trouver le document ?</h3>
+        <table class="tableBase whereTable">
+            <thead>
+                <tr>
+                    <th>Auteur</th>
+                    <th>Localisation interne</th>
+                    <th>Cote</th>
+                    <th>Statut</th>
+                    <th>Retour</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php if(isset($book_result)): ?>
+                <tr class="row<?=$book_result["id"] ?>">
+                    <td data-label='Auteur' class="infosTd"><?= $book_result["auteur"] ?></td>
+                    <td data-label='Localisation interne' class="infosTd"><?= $book_result["localisation_interne"] ?></td>
+                    <td data-label='Cote' class="infosTd"><?= $book_result["cote"] ?></td>
+                    <td data-label='Statut' class="infosTd"><?= $book_result["statut"] ?></td>
+                    <td data-label='Retour' class="infosTd returnDateTd"><?= $return_date["return_date"] ?></td>
+                </tr>
+            <?php endif; ?>
+            </tbody>
+        </table>    
+    </div>
+</section>
+
+                                                  
+
+
+
+
+

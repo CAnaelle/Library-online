@@ -1,0 +1,95 @@
+<?php $adminController = new AdminController(); ?> 
+<?php $bookingController = new BookingController(); ?>
+<?php $borrowController = new BorrowController(); ?>
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Catalogue bibliothèque" />
+        <meta name="keywords" content="livre, roman, bibliotheque" />
+        <meta name="author" content="Anaëlle Cussac" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        
+        <title><?php $titre ?></title>
+        
+        <!-- Favicon -->
+        <link
+          rel="shortcut icon"
+          type="image/x-icon"
+          title="Logo"
+          href="public/assets/favicon/favicon.ico"
+        />
+        
+        <!--Font awesome-->
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        />
+        
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,200;0,400;1,300&family=Cantarell:ital@0;1&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Sora:wght@200;300&display=swap" rel="stylesheet">
+
+        <!-- Lien fichier CSS -->
+        <link rel="stylesheet" href="public/css/normalize.css" type="text/css" />
+        <link rel="stylesheet" href="public/css/style.css" type="text/css" />
+    </head>
+    <body id="top">
+        <header class="bgHeaderAdmin">
+            <div class="container">
+                <div class="mainHeadAdmin">
+                    <?php if($adminController -> adminIs_connect()):?>
+                        <div class="buttons">
+                            <a href="index.php?action=deconnectAdmin" class="buttons__button buttons__button--deconnexion"><i class="fa-solid fa-power-off"></i></a>
+                        </div>
+                    <?php endif;?>
+                    <div class="signeboard">
+                        <div class="logo"><a href="index.php"><img src="public/assets/images/Book_white.svg" alt="logo"/></a></div>
+                        <h1><a href="index.php">Bibliothèque</a></h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+        <?php if($adminController -> adminIs_connect()):?>
+        <div class="adminWelcome">
+            <p class="welcome">Bonjour <?= $_SESSION['admin'] ?>, vous avez le rôle d'administrateur.</p>        
+            <div class="adminButtonsHome">
+            <a href="index.php?action=admin" class="adminButtons__button dashboard"><i class="fa-solid fa-gears"></i> Tableau de bord</a>
+            <a href="index.php" class="adminButtons__button home"><i class="fa-solid fa-house"></i> Retour à l'accueil</a>
+            </div>
+        </div>
+        <?php endif; ?>
+            <!--PARTIE DYNAMIQUE -->
+            <?php require $template.".phtml"; ?> 
+
+            <div class="buttonArrow">
+                <a href="#top"><i class="fas fa-chevron-up"></i></a>
+            </div>
+        </main>
+        
+    <!-- Lien JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    
+    <script src="public/js/searchBook.js"></script>
+    <script src="public/js/deleteBooking.js"></script>
+    <script src="public/js/wishlist.js"></script>
+    <script src="public/js/borrow.js"></script>
+    <script src="public/js/editUserByAdmin.js"></script>
+    <script src="public/js/editBookByAdmin.js"></script>
+    <script src="public/js/deleteBook.js"></script>
+    <script src="public/js/deleteContactMessage.js"></script>
+    <script src="public/js/deleteEvent.js"></script>
+    <script src="public/js/deleteUser.js"></script>
+    <script src="public/js/main.js"></script>
+    </body>
+</html>

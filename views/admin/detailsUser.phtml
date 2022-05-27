@@ -1,0 +1,76 @@
+<?php if($user): ?>
+<div class="reader">
+    <h3><?= $user["Nom"] ?> <?= $user["Prenom"] ?></h3>
+    <p>Numéro étudiant/lecteur: <?= $user["numero_etu"] ?></p>
+    <p>Téléphone: <?= $user["tel"] ?></p>
+    <p>Adresse: <?= $user["adresse"] ?> <?= $user["code_postal"] ?> <?= $user["Ville"] ?></p>
+    <p>Email: <a href="mailto: <?= $user["email"] ?>"><?= $user["email"] ?></a></p>
+</div>
+<?php endif; ?>
+<div>
+<p id="messageUser" class="message  infoBooking"></p> <!-- pour afficher le message à partir de js -->
+<?php if(isset($messageUser)): ?>
+    <p id="messageUser infoBooking" class="message"><?= $messageUser ?></p>
+<?php endif; ?>
+<table class="tableBase adminTable detailsAdminTable">
+    <caption class="titleTable">Les réservations</caption>
+    <thead>
+        <tr>
+            <th>Date d'ajout de la réservation</th>
+            <th>Date de début de réservation</th>
+            <th>Fin de réservation</th>
+            <th>Titre</th>
+            <th>Auteur(s)</th>
+            <th>Statut</th>
+            <th>Localisation</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if(isset($bookingUser)): ?>    
+    <?php foreach($bookingUser as $booking): ?>
+        <tr class="row<?=$booking["id"] ?>">
+            <td data-label='Date ajout de réservation' class="infosTd"><?= $booking["date_ajout"] ?></td>
+            <td data-label='Date début de réservation' class="infosTd"><?= $booking["date_deb_reserv"] ?></td>
+            <td data-label='Date fin de réservation' class="infosTd"><?= $booking["date_fin_reserv"] ?></td>
+            <td data-label='Titre' class="infosTd"><?= $booking["titre"] ?>, Tome <?= $booking["tome"] ?></td>
+            <td data-label='Auteur(s)' class="infosTd"><?= $booking["auteur"] ?></td>
+            <td data-label='Statut' class="infosTd"><?= $booking["statut"] ?></td>
+            <td data-label='Localisation interne' class="infosTd"><?= $booking["localisation_interne"] ?></td>
+            <td data-label='' class="infosTd">
+                <span class="deleteBooking" data-idbook ="<?= $booking["id_book"]?>" data-idreserv="<?=$booking["id"] ?>">
+                <i class="fa-solid fa-xmark"></i>
+                </span>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+</table>
+
+<table class="tableBase adminTable borrowAdminTable">
+    <caption class="titleTable">Les prêts</caption>
+    <thead>
+        <tr>
+            <th>Date de prêt</th>
+            <th>Fin du prêt</th>
+            <th>Titre</th>
+            <th>Auteur(s)</th>
+            <th>Statut</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if(isset($borrowUser)): ?>    
+    <?php foreach($borrowUser as $borrow): ?>
+        <tr>
+            <td data-label='Date de réservation' class="infosTd"><?= $borrow["date_deb_pret"] ?></td>
+            <td data-label='Date de fin de réservation' class="infosTd"><?= $borrow["date_fin_pret"] ?></td>
+            <td data-label='Titre' class="infosTd"><?= $borrow["titre"] ?>, Tome <?= $borrow["tome"] ?></td>
+            <td data-label='Auteur(s)' class="infosTd"><?= $borrow["auteur"] ?></td>
+            <td data-label='Statut' class="infosTd"><?= $borrow["statut"] ?></td>
+        </tr>
+    <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+</table>
+</div>

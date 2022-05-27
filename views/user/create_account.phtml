@@ -1,0 +1,103 @@
+<h2>Création d'un compte lecteur</h2>
+<?php if(isset($messageUser)): ?>
+    <p class="message"><?= $messageUser ?></p>
+<?php endif; ?>
+<form action="index.php?action=create_account" method="POST" class="formBase formUser">
+    <fieldset>
+        <legend><i class="fa-solid fa-user"></i> Identité et coordonnées</legend>
+            <div>
+                <p>Civilité</p>
+                <?php if(isset($errors['civilite'])): ?>
+                    <p class="error"><?= $errors['civilite'] ?></p>
+                <?php endif; ?>
+                <p>
+                    <input id="civilite-M" class="radio" type="radio" name="civilite" value="M" required/>
+                    <label for="civilite-M" class="labelUser">M</label>
+                </p>
+                <p>
+                    <input id="civilite-Mme" class="radio" type="radio" name="civilite" value="Mme" required/>
+                    <label for="civilite-Mme" class="labelUser">Mme</label>
+                </p>
+                <p>
+                    <input id="civilite-Neutre" class="radio" type="radio" name="civilite" value="Neutre" required/>
+                    <label for="civilite-Neutre" class="labelUser">Neutre</label>
+                </p>
+            </div>
+            <div>
+                <label for="nom" class="labelUser">Nom</label>
+                <?php if(isset($errors['nom'])): ?>
+                    <p class="error"><?= $errors['nom'] ?></p>
+                <?php endif; ?>
+                <input id="nom" type="text" name="nom" required value="<?= $_POST['nom'] ??'' ?>"/>
+            </div>
+            <div>
+                <label for="prenom" class="labelUser">Prénom</label>
+                <?php if(isset($errors['prenom'])): ?>
+                    <p class="error"><?= $errors['prenom'] ?></p>
+                <?php endif; ?>
+                <input id="prenom" type="text" name="prenom" required value="<?= $_POST['prenom'] ??'' ?>"/>
+            </div>
+            <div>
+                <label for="date_naissance" class="labelUser">Date de naissance</label>
+                <?php if(isset($errors['date_naissance'])): ?>
+                    <p class="error"><?= $errors['date_naissance'] ?></p>
+                <?php endif; ?>
+                <input id="date_naissance" type="date" name="date_naissance" value="<?= $_POST['date_naissance'] ??'' ?>"/>
+            </div>
+            <div>
+                <label for="adresse" class="labelUser">Adresse</label>
+                <?php if(isset($errors['adresse'])): ?>
+                    <p class="error"><?= $errors['adresse'] ?></p>
+                <?php endif; ?>
+                <input id="adresse" type="text" name="adresse" required value="<?= $_POST['adresse'] ??'' ?>"/>
+            </div>
+            <div>
+                <label for="ville" class="labelUser">Ville</label>
+                <?php if(isset($errors['ville'])): ?>
+                    <p class="error"><?= $errors['ville'] ?></p>
+                <?php endif; ?>
+                <input id="ville" type="text" name="ville" required value="<?= $_POST['ville'] ??'' ?>"/>
+            </div>
+            <div>
+                <label for="cp" class="labelUser">Code Postal</label>
+                <?php if(isset($errors['cp'])): ?>
+                    <p class="error"><?= $errors['cp'] ?></p>
+                <?php endif; ?>
+                <input id="cp" type="text" name="cp" required value="<?= $_POST['cp'] ??'' ?>"/>
+            </div>
+            <div>
+                <label for="tel" class="labelUser">Telephone</label>
+                <?php if(isset($errors['tel'])): ?>
+                    <p class="error"><?= $errors['tel'] ?></p>
+                <?php endif; ?>
+                <input id="tel" type="tel" name="tel" required value="<?= $_POST['tel'] ??'' ?>"/>
+            </div>
+    </fieldset>
+    <fieldset>
+        <legend>Informations d'authentification</legend>
+            <div>
+                <label for="number" class="labelUser">Numéro étudiant ou lecteur</label>
+                <?php if(isset($errors['number'])): ?>
+                    <p class="error"><?= $errors['number'] ?></p>
+                <?php endif; ?>
+                <input id="number" type="text" name="number" required value="<?= $_POST['number'] ??'' ?>"/>
+            </div>
+            <div>
+                <label for="email" class="labelUser">Email</label>
+                <?php if(isset($errors['email'])): ?>
+                    <p class="error"><?= $errors['email'] ?></p>
+                <?php endif; ?>
+                <input id="email" type="email" name="email" required value="<?= $_POST['email'] ??'' ?>"/>
+            </div>
+            <div>
+                <label for="password" class="labelUser">Mot de passe</label>
+                <?php if(isset($errors['password'])): ?>
+                    <p class="error"><?= $errors['password'] ?></p>
+                <?php endif; ?>
+                <input id="password" type="password" name="password" required/>
+            </div>
+    </fieldset>
+    <button type="submit" class="buttonForm add">S'enregistrer</button>
+    <button type="reset" class="buttonForm erase">Effacer</button>
+    <a href="index.php" class="buttonForm cancel">Annuler</a>
+</form>

@@ -1,0 +1,149 @@
+<?php $userController = new UserController(); ?>  <!--on fait appel à UserController pour qu'il reconnaisse la session-->
+<?php $adminController = new AdminController(); ?> <!--de même pour admin-->
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Catalogue bibliothèque" />
+        <meta name="keywords" content="livre, roman, bibliotheque" />
+        <meta name="author" content="Anaëlle Cussac" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        
+        <title><?php $titre ?></title>
+        
+        <!-- Favicon -->
+        <link
+          rel="shortcut icon"
+          type="image/x-icon"
+          title="Logo"
+          href="public/assets/favicon/favicon.ico"
+        />
+        
+        <!--Font awesome-->
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        />
+        
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,200;0,400;1,300&family=Cantarell:ital@0;1&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Sora:wght@200;300&display=swap" rel="stylesheet">
+
+        <!-- Lien fichier CSS -->
+        <link rel="stylesheet" href="public/css/normalize.css" type="text/css" />
+        <link rel="stylesheet" href="public/css/style.css" type="text/css" />
+    </head>
+    <body id="top">
+        <header class="bgHeader">
+            <div class="container">
+                <div class="mainHead">
+                    
+                    <?php if($adminController -> adminIs_connect()):?>
+                        <div class="buttons">
+                            <a href="index.php?action=deconnectAdmin" class="buttons__button buttons__button--deconnexion"><i class="fa-solid fa-power-off"></i></a>
+                            <a href="index.php?action=admin" class="buttons__button buttons__button--dashboard"><i class="fa-solid fa-gears"></i></a>
+                        </div>
+                    <?php elseif($userController -> is_connect()):?>
+                        <div class="buttons">
+                            <a href="#" class="buttons__button buttons__button--profil"><img src="public/assets/avatar/<?= $_SESSION['photo'] ?>" alt="<?= $_SESSION['photo'] ?>" class="avatar"/><?= $_SESSION['reader'] ?></a>
+                            <a href="index.php?action=deconnect" class="buttons__button buttons__button--deconnexion"><i class="fa-solid fa-power-off"></i></a>
+                        </div>
+                    <?php else: ?>
+                        <div class="buttons">
+                            <a href="index.php?action=connect" class="buttons__button buttons__button--connexion"><i class="fa-solid fa-user"></i></a>
+                        </div>
+                    <?php endif;?>
+                    <div class="signeboard">
+                        <div class="logo"><a href="index.php"><img src="public/assets/images/Book_white.svg" alt="logo"/></a></div>
+                        <h1><a href="index.php">Bibliothèque</a></h1>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.php">Accueil</a></li>
+                        <li><a href="index.php?action=events">Évènements</a></li>
+                        <li><a href="index.php?action=infos">Infos pratiques</a></li>
+                        <?php if($userController -> is_connect()):?>
+                        <li><a href="index.php?action=listBookingUser">Mes réservations</a></li>
+                        <li><a href="index.php?action=listBorrowUser">Mes prêts</a></li>
+                        <li><a href="index.php?action=wishlist" id='eventWishList'>Mes coups de coeur</a></li>
+                        <?php endif;?>
+                        <li><a href="index.php?action=message">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            <?php if(isset($messageInform)): ?>
+                <p class="message"><?= $messageInform ?></p>
+            <?php endif; ?>
+
+            <!--PARTIE DYNAMIQUE -->
+            <?php require $template.".phtml"; ?> 
+
+            <div class="buttonArrow">
+                <a href="#top"><i class="fas fa-chevron-up"></i></a>
+            </div>
+        </main>
+        <footer class="bgFooter">
+            <div class="container infos">
+                <div class="infos--mod">
+                    <h3>Horaires</h3>
+                    <div>
+                        <p>Ouvert du lundi au samedi</p>
+                        <p>De 09h00 à 13h30 et 14h à 19h.</p>
+                    </div>
+                </div>
+                <div class="infos--mod contacts">
+                    <h3>Contacts</h3>
+                    <div class="contacts__div">
+                        <div class="contacts__div--icon">
+                            <a href="mailto: biblio@gmail.com">
+                                <i class="fa-solid fa-envelope"></i>
+                                <p>biblio@gmail.com</p>
+                            </a>
+                        </div>
+                        <div class="contacts__div--icon">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                            <p>06 00 00 00 00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="infos--mod networks">
+                    <h3>Réseaux sociaux</h3>
+                    <a href="https://www.youtube.com" target="-blank"
+                      ><i class="fa-brands fa-youtube fa-2x"></i></a>
+                    <a href="https://www.facebook.com" target="-blank"
+                      ><i class="fa-brands fa-facebook-square fa-2x"></i
+                    ></a>
+                    <a href="https://www.instagram.com/" target="-blank"
+                      ><i class="fa-brands fa-instagram-square fa-2x"></i
+                    ></a>
+                </div>
+            </div>
+            <div class="mentions">
+                <p><a href="index.php?action=mentions">Mentions légales</a></p>
+                <p><a href="index.php?action=privacy">Politiques de confidentialité</a></p>
+                <p>© Anaëlle CUSSAC 2022</p>
+            </div>
+        </footer>
+        
+    <!-- Lien JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    
+    <script src="public/js/searchBook.js"></script>
+    <script src="public/js/deleteBooking.js"></script>
+    <script src="public/js/wishlist.js"></script>
+    <script src="public/js/carrousel.js"></script>
+    <script src="public/js/main.js"></script>
+    </body>
+</html>

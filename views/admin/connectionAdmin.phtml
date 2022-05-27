@@ -1,0 +1,48 @@
+<?php if($adminController -> adminIs_connect()): ?>
+    <div class="adminButtons">
+        <a href="index.php?action=borrow" class="adminButtons__button"><i class="fa-solid fa-plus"></i> Ajouter un prêt</a>
+        <a href="index.php?action=returnBook" class="adminButtons__button"><i class="fa-solid fa-arrow-rotate-right"></i> Remettre un livre en service</a>
+        <a href="index.php?action=addBook" class="adminButtons__button"><i class="fa-solid fa-plus"></i> Ajouter un livre</a>
+        <a href="index.php?action=editBook" class="adminButtons__button"><i class="fa-solid fa-pen"></i> Modifier une notice de livre</a>
+        <a href="index.php?action=addEventAdmin" class="adminButtons__button"><i class="fa-solid fa-calendar"></i> Ajouter un évènement</a>
+        <a href="index.php?action=listBookingAdmin" class="adminButtons__button">Afficher les réservations</a>
+        <a href="index.php?action=listBorrowAdmin" class="adminButtons__button">Afficher les prêts</a>
+        <a href="index.php?action=listDelayAdmin" class="adminButtons__button">Afficher les retards</a>
+        <a href="index.php?action=listReaderAdmin" class="adminButtons__button">Afficher la liste des lecteurs</a>
+        <a href="index.php?action=eventsAdmin" class="adminButtons__button">Afficher la liste des évènements</a>
+        <a href="index.php?action=contactMessagesAdmin" class="adminButtons__button">Afficher la liste des messages de contact</a>
+    </div>
+    <section class="informAdmin">
+    <h3>Nombre de réservations de la veille</h3>
+    <a href="index.php?action=listBookingAdmin"><?= $bookingController -> numberBookingAdmin() ?></a>
+    <h3>Nombre de retards</h3>
+    <a href="index.php?action=listDelayAdmin"><?= $borrowController -> numberBorrowAdmin() ?></a>
+    </section>
+<?php else: ?>
+<h2>Se connecter avec son compte administrateur</h2>
+    <form action="index.php?action=admin" method="POST" class="formBase formUser">
+        <fieldset>
+            <legend><i class="fa-solid fa-lock"></i> Informations d'authentification</legend>
+            <?php if(isset($messageAdmin)): ?>
+                <p class="message"><?= $messageAdmin ?></p>
+            <?php endif; ?>
+                <p>
+                    <label for="pseudo" class="labelUser">Pseudo</label>
+                    <br />
+                    <input id="pseudo" type="text" name="pseudo" required/>
+                </p>
+                <p>
+                    <label for="email" class="labelUser">Email</label>
+                    <br />
+                    <input id="email" type="email" name="email" required/>
+                </p>
+                <p>
+                    <label for="password" class="labelUser">Mot de passe</label>
+                    <br />
+                    <input id="password" type="password" name="password" required/>
+                </p>
+        </fieldset>
+        <button type="submit" class="buttonForm add">Connexion</button>
+        <a href="index.php" class="buttonForm cancel">Annuler</a>
+    </form>
+<?php endif; ?>

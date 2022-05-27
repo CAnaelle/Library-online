@@ -1,0 +1,61 @@
+
+<h2><i class="fa-solid fa-calendar"></i> Ajout d'un évènement</h2>
+<form method="POST" action="index.php?action=addEventAdmin" enctype="multipart/form-data" class="formBase formAdmin">
+    <?php if(isset($messageAdmin)): ?>
+        <p class="message"><?= $messageAdmin ?></p>
+    <?php endif; ?>
+    <fieldset>
+        <legend>Caractéristiques</legend>
+        <p>
+            <label for="titre">Titre</label>
+            <?php if(isset($errors['titre'])): ?>
+                <p class="message"><?= $errors['titre'] ?></p>
+            <?php endif; ?>
+            <input id="titre" type="text" name="titre" required value="<?= $_POST['titre'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="jour">Jour(s)</label>
+            <?php if(isset($errors['jour'])): ?>
+                <p class="message"><?= $errors['jour'] ?></p>
+            <?php endif; ?>
+            <input id="jour" type="text" name="jour" required value="<?= $_POST['jour'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="date_deb">Date de début et heure de l'évènement</label>
+            <?php if(isset($errors['date_deb'])): ?>
+                <p class="message"><?= $errors['date_deb'] ?></p>
+            <?php endif; ?>
+            <input id="date_deb" type="datetime-local" name="date_deb" required value="<?= $_POST['date_deb'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="date_fin">Date de fin et heure de l'évènement</label>
+            <?php if(isset($errors['date_fin'])): ?>
+                <p class="message"><?= $errors['date_fin'] ?></p>
+            <?php endif; ?>
+            <input id="date_fin" type="datetime-local" name="date_fin" required value="<?= $_POST['date_fin'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="resume">Résumé</label>
+            <?php if(isset($errors['resume'])): ?>
+                <p class="message"><?= $errors['resume'] ?></p>
+            <?php endif; ?>
+            <textarea id="resume" name="resume" required ><?= $_POST['resume'] ??'' ?></textarea>
+        </p>
+        <p>
+            <label for="nombre">Nombre de places</label>
+            <?php if(isset($errors['nombre'])): ?>
+                <p class="message"><?= $errors['nombre'] ?></p>
+            <?php endif; ?>
+            <input id="nombre" type="number" name="nombre" required value="<?= $_POST['nombre'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="image">Image</label>
+            <?php if(isset($errors['image'])): ?>
+                <p class="message"><?= $errors['image'] ?></p>
+            <?php endif; ?>
+            <input id="image" type="file" name="image" accept=".png, .jpg, .jpeg"/>
+        </p>
+    </fieldset>
+    <button type="submit" class="buttonForm add">Ajouter</button>
+    <a href="index.php?action=admin" class="buttonForm cancel">Annuler</a>
+</form>

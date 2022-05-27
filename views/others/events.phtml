@@ -1,0 +1,29 @@
+<div id="menuSearch" class="menuSearch">
+    <form method="GET" action="index.php" class="form">
+        <div class="position">
+            <input type="search" id="researchWords" name="bookList" class="inputSearch" autocomplete="off" placeholder="Rechercher un livre"/><!--autocomplete permet d'enlever les recherches passées qui s'affiche au-dessus de ma liste de recherche-->
+            <div id="targetResearch" class="result hide"></div>
+        </div>
+        <button type="submit" class="validate">Recherche avancée</button>
+    </form>
+</div>
+
+<h2>Évènements à venir</h2>
+<p class="center welcome">Pour toute inscription, veuillez nous contacter par email ou par téléphone.</p>
+<div class="eventsArticles">
+<?php foreach($events as $event) : ?>
+    <article class="eventArticle">
+        <?php if(!empty($event["image"])): ?>
+        <div class="imgEvent"><img src="public/assets/images/evenements/<?= $event["image"] ?>" alt="<?= $event["image"] ?>" class="imgEvent__img"/></div>
+        <?php endif; ?>
+        <div class="infoEvent">
+            <h3><?= $event["Titre"] ?></h3>
+            
+            <p class="date"><?= $event["Jour"] ?>, Du <?= $event["date_deb"] ?> au <?= $event["date_fin"] ?></p>
+            <p class="date">Atelier de <?= $event["heure_deb"] ?> à <?= $event["heure_fin"] ?></p>
+            <p><?= $event["resume"] ?></p>
+            <p>Nombre de place limité à <span class="bold"><?= $event["nbre_place"] ?></span>.</p>
+        </div>
+    </article>
+<?php endforeach; ?>
+</div>

@@ -1,0 +1,33 @@
+<h2>Mes prêts</h2>
+<p class="infoBooking">Vous avez 1 mois de prêt.</p>
+<?php if(isset($messageUser)): ?>
+    <p id="messageUser infoBooking" class="message"><?= $messageUser ?></p>
+<?php endif; ?>
+<table class="tableBase listBookTable bookingTable">
+    <thead>
+        <tr>
+            <th>En savoir plus</th>
+            <th>Titre</th>
+            <th>Tome</th>
+            <th>Auteur(s)</th>
+            <th>Date de prêt</th>
+            <th>Date de fin de prêt</th>
+            <th>Statut</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if(isset($borrowByIdUser)): ?>    
+    <?php foreach($borrowByIdUser as $borrow): ?>
+        <tr id="row<?=$borrow["id"] ?>">
+            <td data-label='En savoir plus' class="infosTd"> <a href="index.php?action=searchBook&id=<?= $borrow["id_book"]?>"><img src="public/assets/images/<?= $borrow["image"] ?>" alt="<?= $borrow["image"] ?>"></a></td>
+            <td data-label='Titre' class="infosTd"><?= $borrow["titre"] ?></td>
+            <td data-label='Tome' class="infosTd"><?= $borrow["tome"] ?></td>
+            <td data-label='Auteur(s)' class="infosTd"><?= $borrow["auteur"] ?></td>
+            <td data-label='Date de prêt' class="infosTd"><?= $borrow["date_deb_pret"] ?></td>
+            <td data-label='Date de fin de prêt' class="infosTd"><?= $borrow["date_fin_pret"] ?></td>
+            <td data-label='Statut' class="infosTd"><?= $borrow["statut"] ?></td>
+        </tr>
+    <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+</table>    

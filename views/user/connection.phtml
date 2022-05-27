@@ -1,0 +1,26 @@
+<form action="index.php?action=connect" method="POST" class="formBase formUser">
+    <fieldset>
+        <legend><i class="fa-solid fa-lock"></i> Connexion avec un compte utilisateur</legend>
+        <?php if(isset($messageUser)): ?>
+            <p class="message"><?= $messageUser ?></p>
+        <?php endif; ?>
+            <div>
+                <label for="email" class="labelUser">Email</label>
+                <input id="email" type="email" name="email" required/>
+            </div>
+            <div>
+                <label for="number" class="labelUser">Numéro étudiant ou lecteur</label>
+                <input id="number" type="text" name="number" required/>
+            </div>
+            <div>
+                <label for="password" class="labelUser">Mot de passe</label>
+                <input id="password" type="password" name="password" required/>
+            </div>
+    </fieldset>
+    <button type="submit" class="buttonForm add">Connexion</button>
+    <a href="index.php" class="buttonForm cancel">Annuler</a>
+</form>
+<div class="link--createAccount">
+    <h3 class="createAccountTitle">Vous n'avez pas de compte ?</h3>
+    <a href="index.php?action=create_account" class="link__createAccount--create">Créer un compte</a>
+</div>

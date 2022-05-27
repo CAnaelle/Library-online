@@ -1,0 +1,40 @@
+<h2>Mes Réservations</h2>
+<p class="infoBooking">Vous avez <span class="bold">15 jours</span> pour venir récupérer, sur le site de la bibliothèque, le livre que vous avez réservé en ligne. Pour toutes informations sur l'accès au site, veuillez vous référer à la <a href="index.php?action=message" class="bold">page Contact.</a></p>
+<p id="messageUser" class="message infoBooking"></p> <!-- pour afficher le message à partir de js -->
+<?php if(isset($messageUser)): ?>
+    <p id="messageUser infoBooking" class="message"><?= $messageUser ?></p>
+<?php endif; ?>
+<table class="tableBase listBookTable bookingTable">
+    <thead>
+        <tr>
+            <th>En savoir plus</th>
+            <th>Titre</th>
+            <th>Tome</th>
+            <th>Auteur(s)</th>
+            <th>Date de réservation</th>
+            <th>Date de fin de réservation</th>
+            <th>Statut</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if(isset($bookingByIdUser)): ?>    
+    <?php foreach($bookingByIdUser as $booking): ?>
+        <tr class="row<?=$booking["id"] ?>">
+            <td data-label='En savoir plus' class="infosTd"> <a href="index.php?action=searchBook&id=<?= $booking["id_book"]?>"><img src="public/assets/images/<?= $booking["image"] ?>" alt="<?= $booking["image"] ?>"></a></td>
+            <td data-label='Titre' class="infosTd"><?= $booking["titre"] ?></td>
+            <td data-label='Tome' class="infosTd"><?= $booking["tome"] ?></td>
+            <td data-label='Auteur(s)' class="infosTd"><?= $booking["auteur"] ?></td>
+            <td data-label='Date début de réservation' class="infosTd"><?= $booking["date_deb_reserv"] ?></td>
+            <td data-label='Date fin de réservation' class="infosTd"><?= $booking["date_fin_reserv"] ?></td>
+            <td data-label='Statut' class="infosTd"><?= $booking["statut"] ?></td>
+            <td data-label='' class="infosTd">
+                <span class="deleteBooking" data-idbook ="<?= $booking["id_book"]?>" data-idreserv="<?=$booking["id"] ?>">
+                <i class="fa-solid fa-xmark"></i>
+                </span>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+</table>    

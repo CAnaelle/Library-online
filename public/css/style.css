@@ -1,0 +1,1507 @@
+/* GENERAL */
+
+:root {
+  --max-width: 1100px;
+  --font-text: 'Barlow Semi Condensed', sans-serif;
+  --font-main-title: 'Sora', sans-serif;
+  --font-titles: 'Cantarell', sans-serif;
+  --font-fontawesome: 'Font Awesome 6 Free';
+  --size-text: 1.7rem;
+  --size-title-1: 3.8rem;
+  --size-title-2: 3rem;
+  --size-title-3: 2.2rem;
+  --size-title-4: 1.7rem;
+  --size-nav: 1.5rem;
+  --size-icon: 2rem;
+  --color-bg-deg-1: rgb(124 163 246);
+  --color-item: rgba(124, 163, 246, 0.629);
+  --color-shadow: rgba(47, 47, 47, 0.7);
+  --color-white: rgb(255, 255, 255);
+  --color-black: rgb(48, 48, 48);
+  --color-marine: rgba(21, 20, 76, 1);
+  --box-shadow: 2px 3px 4px 0px var(--color-shadow);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /*défilement doux*/
+  font-size: 62.5%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: var(--font-text);
+  font-size: var(--size-text);
+  background-color: rgba(128, 128, 128, 0.3);
+}
+
+a {
+  display: inline-block;
+  text-decoration: none; /*enlève les caractéristiques par défaut des liens: lien sans décoration, soulignement*/
+  color: black;
+}
+
+nav ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+/* Clearfix */
+.clearfix::before,
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* Hide */
+.hide {
+  display: none;
+}
+
+/*******************************************
+LAYOUT HEADER
+*********************************************/
+
+/********BUTTON************/
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.buttons__button {
+  padding: 5px;
+  margin: 5px;
+}
+
+.buttons__button i {
+  padding: 5px;
+}
+
+.buttons__button--connexion,
+.buttons__button--deconnexion,
+.buttons__button--dashboard {
+  font-size: var(--size-icon);
+  color: var(--color-white);
+}
+
+.buttons__button--profil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-white);
+}
+
+.buttons__button--profil:hover,
+.buttons__button--connexion:hover,
+.buttons__button--deconnexion:hover,
+.buttons__button--dashboard:hover {
+  transform: scale(1.1);
+}
+
+.buttons__button--booking {
+  margin-left: 0;
+  background-color: var(--color-white);
+  box-shadow: var(--box-shadow);
+  border-radius: 2px;
+}
+.buttons__button--booking::before {
+  font-family: var(--font-fontawesome);
+  font-weight: 900;
+  content: '\f017';
+  padding-right: 5px;
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 580px) {
+  .buttons__button--connexion,
+  .buttons__button--deconnexion,
+  .buttons__button--dashboard {
+    text-align: center;
+  }
+  .buttons__button--connexion::after {
+    font-size: var(--size-text);
+    content: 'Connexion';
+    display: block;
+  }
+  .buttons__button--deconnexion::after {
+    font-size: var(--size-text);
+    content: 'Déconnexion';
+    display: block;
+  }
+
+  .buttons__button--dashboard::after {
+    font-size: var(--size-text);
+    content: 'Tableau de bord';
+    display: block;
+  }
+}
+
+/********MAINHEAD************/
+header {
+  padding-bottom: 20px;
+}
+
+.signeboard {
+  display: flex;
+  justify-content: center;
+  margin: 0 5px;
+}
+
+h1 {
+  margin-top: 0;
+  padding: 20px 0 5px;
+  font-family: var(--font-main-title);
+  font-size: var(--size-title-1);
+}
+
+h1 a {
+  color: var(--color-white);
+}
+
+.logo {
+  margin: 15px 15px 0;
+  width: 60px;
+}
+
+.bgHeader,
+.bgFooter,
+.bgHeaderAdmin {
+  background: linear-gradient(var(--color-bg-deg-1), 10%, var(--color-marine));
+}
+
+.avatar {
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 580px) {
+  .bgHeader {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .mainHead {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
+
+/********NAV************/
+nav ul {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+nav ul li a {
+  font-size: var(--size-nav);
+  color: var(--color-white);
+  padding: 15px 0;
+  width: 100%;
+  text-transform: uppercase;
+  transition: all 0.4s;
+}
+
+nav ul li a:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  box-shadow: var(--box-shadow);
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 580px) {
+  nav ul {
+    display: flex;
+    align-items: center;
+    word-break: break-word;
+  }
+
+  nav ul li a {
+    padding: 15px;
+  }
+
+  nav ul li a:hover {
+    transform: scale(1.1);
+  }
+}
+
+@media screen and (min-width: 630px) {
+  nav ul {
+    word-break: normal;
+  }
+}
+
+/*******************************************
+MAIN STATIC
+*********************************************/
+.container {
+  max-width: var(--max-width);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+h2 {
+  margin: 30px 10px;
+  font-family: var(--font-titles);
+  font-size: var(--size-title-2);
+  text-align: center;
+}
+
+.buttonArrow {
+  text-align: center;
+  padding: 15px;
+}
+
+/********BARRE DE RECHERCHE************/
+.menuSearch {
+  margin-top: 20px;
+}
+
+.form::before {
+  font-family: var(--font-fontawesome);
+  font-weight: 900;
+  content: '\f002';
+  padding-left: 5px;
+}
+
+.position {
+  position: relative;
+  display: inline-block;
+  width: 105px; /* largeur de l'input */
+}
+
+.inputSearch {
+  padding: 3px;
+  width: 105px;
+}
+
+.result {
+  background-color: var(--color-white);
+  max-width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.validate {
+  margin: auto 5px;
+  padding: 5px 8px;
+  border: none;
+  background-color: var(--color-white);
+  box-shadow: 1px 2px 2px 0px var(--color-shadow);
+  cursor: pointer;
+}
+
+/* BARRE DE RECHERCHE bookSearchTarget.phtml*/
+.null {
+  padding: 0 5px;
+}
+.optionSearch {
+  padding: 10px 5px;
+  display: block;
+}
+
+.optionSearch:hover {
+  background-color: var(--color-item);
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 380px) {
+  .inputSearch,
+  .position {
+    width: 170px;
+  }
+}
+
+@media screen and (min-width: 580px) {
+  .inputSearch,
+  .position {
+    width: 190px;
+  }
+}
+
+/******* MESSAGE ERREUR ********/
+.message,
+.error {
+  font-weight: bold;
+  color: rgb(255, 0, 0);
+}
+
+/* research, booking.phtml ...*/
+.messageUser {
+  font-size: var(--size-title-3);
+}
+
+/*******************************************
+MAIN HOME
+*********************************************/
+/* CARROUSEL */
+#carrousel, div.nav-dots{
+  display:none;
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 500px) {
+  #carrousel {
+    display:block;
+    margin-top: 50px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 1px 2px 2px 0px var(--color-shadow);
+  }
+  
+  .items-container {
+    height: 500px;
+    width: 100%;
+    transition: 0.8s ease-in;
+    position: relative;
+  }
+  
+  .item {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  
+  .item__img {
+    width: 100%;
+    height: 80%;
+  }
+  
+  .item__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .previous-btn,
+  .next-btn {
+    font-size: 25px;
+    background-color: var(--color-white);
+    padding: 12px;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    opacity: 0.7;
+    z-index: 50;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .previous-btn:hover,
+  .next-btn:hover {
+    opacity: 1;
+  }
+  
+  .previous-btn {
+    left: 0;
+  }
+  
+  .next-btn {
+    right: 0;
+  }
+  
+  div.nav-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0 60px;
+  }
+  
+  .dot {
+    background-color: var(--color-marine);
+    width: 12px;
+    height: 12px;
+    margin: 0 8px;
+    border: 1px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .dot.active {
+    background-color: var(--color-white);
+  }
+  
+  .item__description {
+    border: 1px solid var(--color-shadow);
+    color: var(--color-white);
+    background: var(--color-marine);
+    height: 20%;
+  }
+  
+  .item__description__title,
+  .item__description__legend {
+    margin: 5px;
+  }
+  
+  .item__description__title h3,
+  .item__description__legend p {
+    margin: 0;
+  }
+}
+/******* NOUVELLES ACQUISITIONS *******/
+.bookArticle {
+  margin: 20px;
+  padding: 5px;
+  background-color: var(--color-white);
+  text-align: center;
+  box-shadow: 3px 3px 5px 0px var(--color-shadow);
+  transition: all 0.3s;
+}
+
+.bookArticle:hover {
+  transform: scale(1.1);
+}
+
+.imgBookHome {
+  width: 45%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.infoBook h3 {
+  margin-bottom: 5px;
+}
+
+.vol {
+  margin-top: 0;
+}
+
+.categorieArticle {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.categorieArticle figure {
+  position: relative;
+  overflow: hidden;
+}
+
+.categorieArticle figure img {
+  width: 230px;
+  height: 200px;
+  opacity: 0.7;
+  vertical-align: middle;
+  border-radius: 15px 50px;
+}
+
+.categorieArticle figcaption {
+  font-family: var(--font-titles);
+  font-size: var(--size-title-3);
+  font-weight: bold;
+  border-radius: 15px 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 500px) {
+  .booksArticles,
+  .categoriesArticles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .bookArticle {
+    margin: 15px 5px;
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .categorieArticle figcaption {
+    color: var(--color-white);
+    background-color: var(--color-shadow);
+    opacity: 0;
+    /* transition: all 0.6s; */
+  }
+
+  .categorieArticle figure img,
+  .categorieArticle figure:hover figcaption {
+    opacity: 1;
+  }
+
+  .categorieArticle figure span {
+    transition: all 0.6s;
+  }
+
+  .categorieArticle figure:hover span {
+    transform: scale(1.07);
+  }
+}
+
+/*******************************************
+FOOTER
+*********************************************/
+footer h3 {
+  font-family: var(--font-titles);
+  font-size: var(--size-title-3);
+  color: var(--color-white);
+}
+
+.bgFooter i,
+.bgFooter p {
+  color: var(--color-white);
+}
+
+.infos {
+  text-align: center;
+}
+
+.infos--mod {
+  padding: 15px;
+}
+
+.contacts__div--icon p {
+  display: inline-block;
+  margin: 5px;
+}
+
+.networks a {
+  margin: 10px;
+}
+
+.mentions{
+  font-size:1.2rem;
+  text-align:center;
+}
+.mentions p{
+  margin:5px;
+}
+.mentions a{
+  color: var(--color-white);
+}
+/**********RESPONSIVE**************/
+@media screen and (min-width: 580px) {
+  .infos {
+    display: flex;
+    justify-content: space-between;
+  }
+  .mentions{
+    display:flex;
+    justify-content:flex-end;
+  }
+}
+
+/*******************************************
+PAGE CONTACT
+*********************************************/
+.contactus {
+  margin: 20px;
+}
+
+.hours,
+.bold {
+  font-weight: bold;
+}
+
+.contactus_email p,
+.contactus_tel p {
+  display: inline-block;
+}
+
+.map {
+  margin: 20px;
+}
+
+iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  border-radius: 20px;
+}
+
+/* ****************
+    FORMULAIRE BASE
+******************** */
+
+.formBase {
+  margin: 20px;
+}
+
+.formBase fieldset {
+  margin: 20px auto;
+  border: none;
+  background-color: var(--color-white);
+  border-radius: 10px;
+}
+
+.formBase legend {
+  padding: 10px;
+  font-size: var(--size-title-3);
+  color: var(--color-white);
+  background-color: var(--color-marine);
+  border-radius: 10px;
+}
+.formBase input,
+.formBase textarea,
+.formBase select {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px 1px var(--color-shadow) inset;
+}
+
+/* Formaulaire contact */
+.messageArea {
+  height: 200px;
+}
+
+.buttonForm {
+  font-weight: bold;
+  padding: 15px;
+  margin: 10px 10px 10px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-white);
+  cursor: pointer;
+  box-shadow: 1px 2px 2px 0px var(--color-shadow);
+}
+.buttonForm:hover {
+  color: white;
+  background-color: var(--color-marine);
+}
+/********RESPONSIVE************/
+@media screen and (min-width: 580px) {
+  .formContact fieldset {
+    display: flex;
+  }
+
+  .infoUser,
+  .messUser {
+    width: 50%;
+    margin: 0 15px;
+  }
+}
+
+/*******************************************
+PAGE INFOS ET PAGE MENTIONS LEGALES
+*********************************************/
+h4{
+  font-size: var(--size-title-4);
+  text-decoration: underline;
+}
+.info-pratiques, .privacy {
+  margin:0 10px;
+  padding: 10px;
+  text-align: justify;
+  background-color: var(--color-white);
+  border-radius:10px;
+}
+
+.div-mentions {
+  margin:0 10px;
+  padding: 10px;
+  text-align: justify;
+  background-color: var(--color-white);
+  border-radius:10px;
+}
+
+.site{
+  word-break: break-word;
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 580px) {
+  .div-mentions{
+    margin:auto;
+  }
+  .mentionsLegales{
+    display:flex;
+    justify-content: space-around;
+  }
+  
+  .mentionsLegales div{
+    width:50%;
+  }
+  
+}
+
+/*******************************************
+PAGE EVENTS
+*********************************************/
+.eventArticle {
+  margin: 20px;
+  padding: 5px;
+  background-color: var(--color-white);
+  text-align: center;
+  box-shadow: 3px 3px 5px 0px var(--color-shadow);
+  transition: all 0.3s;
+}
+
+.eventArticle:hover {
+  transform: scale(1.1);
+}
+
+.imgEvent {
+  width: 45%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.infoEvent h3 {
+  margin-bottom: 5px;
+}
+
+
+/********RESPONSIVE************/
+@media screen and (min-width: 500px) {
+  .eventsArticles{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .eventArticle {
+    margin: 15px 5px;
+    width: 45%;
+  }
+}
+
+
+/*******************************************
+MAIN DYNAMIC RESEARCH BOOK : researchBooks
+*********************************************/
+.listBook span {
+  font-weight: bold;
+}
+
+.listBook p {
+  margin: 20px 10px;
+  font-size: 1.8rem;
+}
+
+/***************
+    TABLEAU BASE
+****************/
+.tableBase tbody tr {
+  background-color: var(--color-white);
+}
+
+.tableBase,
+.tableBase thead,
+.tableBase tbody,
+.tableBase tr,
+.tableBase th,
+.tableBase td {
+  display: block;
+  word-break: break-word;
+}
+
+.tableBase {
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.tableBase thead {
+  display: none;
+}
+
+.tableBase tr {
+  margin-bottom: 1.5rem;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.tableBase td.infosTd {
+  padding: 5px 5px 5px 125px;
+  min-height: 30px; /* pour tome si vide permet hauteur minimale */
+  position: relative;
+}
+
+.tableBase td.resume{
+  text-align: justify;
+}
+
+.tableBase td.infosTd::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  color: var(--color-white);
+  background-color: var(--color-marine);
+}
+
+/* RESPONSIVE */
+@media screen and (min-width: 700px) {
+  .tableBase,
+  .tableBase thead,
+  .tableBase tbody,
+  .tableBase tr,
+  .tableBase th,
+  .tableBase td {
+    display: table;
+    table-layout: auto;
+    border-collapse: collapse;
+  }
+
+  .tableBase thead,
+  .tableBase tbody {
+    display: block;
+  }
+
+  .tableBase thead {
+    text-align: left;
+    color: var(--color-white);
+    background-color: var(--color-marine);
+  }
+
+  .tableBase th {
+    height: 50px;
+    font-weight: normal;
+  }
+
+  .tableBase tr {
+    width: 100%;
+    margin-bottom: 0;
+    border: none;
+  }
+
+  .tableBase th,
+  .tableBase td {
+    padding: 5px;
+    display: table-cell;
+  }
+
+  .tableBase td.infosTd {
+    position: static;
+    padding: 5px;
+  }
+
+  .tableBase tbody tr:not(:first-child) {
+    border-top: 1px solid var(--color-marine);
+  }
+
+  .tableBase td.infosTd::before {
+    display: none;
+  }
+}
+
+/* Tableau recherche livres */
+
+td.infosTd img {
+  width: 150px;
+}
+
+/* centrer l'image */
+.listBookTable td:first-child,
+.listBookTable th:first-child {
+  text-align: center;
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 700px) {
+  .listBookTable td:first-child,
+  .listBookTable th:first-child {
+    width: 10%;
+  }
+
+  .listBookTable th:nth-child(2),
+  .listBookTable td:nth-child(2) {
+    width: 10%;
+  }
+
+  .listBookTable th:nth-child(3),
+  .listBookTable td:nth-child(3) {
+    width: 10%;
+    text-align: center;
+  }
+
+  .listBookTable th:nth-child(4),
+  .listBookTable td:nth-child(4) {
+    width: 10%;
+  }
+
+  .listBookTable th:nth-child(5),
+  .listBookTable td:nth-child(5) {
+    width: 30%;
+  }
+
+  .listBookTable th:nth-child(6),
+  .listBookTable td:nth-child(6) {
+    width: 10%;
+  }
+  .listBookTable th:nth-child(7),
+  .listBookTable td:nth-child(7) {
+    width: 10%;
+    text-align: center;
+  }
+  .listBookTable th:nth-child(8),
+  .listBookTable td:nth-child(8) {
+    width: 10%;
+    text-align: center;
+  }
+}
+
+/*******************************************
+MAIN DYNAMIC ONE BOOK : bookSearchById
+*********************************************/
+.headBook h2 {
+  margin: 30px 0 5px;
+  text-align: left;
+}
+
+.bookDesc {
+  margin: 10px;
+}
+
+.headBook span {
+  font-weight: bold;
+}
+
+.headBook p {
+  text-align: justify;
+}
+
+.imgBook {
+  width: 130px;
+  float: left;
+  padding-right: 10px;
+}
+
+.descriptionBook ul li {
+  margin: 10px 0;
+  text-align: justify;
+}
+
+.wishlist--floating {
+  float: right;
+  margin: 10px;
+}
+
+/* Tableau où trouver le document */
+.returnDateTd {
+  min-height: 30px;
+}
+
+.whereTable td.infosTd {
+  padding: 10px 5px 10px 140px;
+}
+
+.whereTable td.infosTd::before {
+  width: 135px;
+  padding: 5px 5px;
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 700px) {
+  .whereTable {
+    width: 70%;
+  }
+
+  .whereTable td.infosTd {
+    padding: 5px;
+  }
+
+  .whereTable td:first-child,
+  .whereTable th:first-child,
+  .whereTable th:nth-child(2),
+  .whereTable td:nth-child(2),
+  .whereTable th:nth-child(3),
+  .whereTable td:nth-child(3),
+  .whereTable th:nth-child(4),
+  .whereTable td:nth-child(4),
+  .whereTable th:nth-child(5),
+  .whereTable td:nth-child(5),
+  .whereTable th:nth-child(6),
+  .whereTable td:nth-child(6),
+  .whereTable th:nth-child(7),
+  .whereTable td:nth-child(7),
+  .whereTable th:nth-child(8),
+  .whereTable td:nth-child(8) {
+    width: 20%;
+    text-align: left;
+  }
+}
+
+/**************************************************************************
+MAIN DYNAMIC CONNECTION AND CREATE ACCOUNT : connection et create_account
+***************************************************************************/
+
+.formUser fieldset div {
+  margin: 20px 0;
+}
+
+.createAccountTitle {
+  margin: 10px;
+  display: inline;
+}
+
+.createAccountTitle,
+.link--createAccount,
+.link__createAccount--create {
+  text-align: center;
+}
+
+.link--createAccount {
+  margin: 40px 0;
+}
+.link__createAccount--create {
+  display: inline;
+  padding: 5px;
+  text-decoration: underline;
+  transition: all 0.3s;
+}
+
+.link__createAccount--create:hover {
+  background-color: var(--color-marine);
+  color: var(--color-white);
+}
+
+.formUser input[type='radio'] {
+  width: auto;
+  box-shadow: none;
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 580px) {
+  .formUser {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/**************************************************************************
+MAIN DYNAMIC LISTE RESERVATIONS USER : listBookingUser
+***************************************************************************/
+
+.bookingTable td.infosTd {
+  padding: 5px 5px 5px 220px;
+}
+
+.bookingTable td.infosTd::before {
+  width: 215px;
+}
+
+.bookingTable caption {
+  font-size: var(--size-title-3);
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.infoBooking {
+  text-align: center;
+  margin: 50px 20px;
+}
+.infoBooking span {
+  font-weight: bold;
+}
+.fa-xmark {
+  cursor: pointer;
+}
+/********RESPONSIVE************/
+@media screen and (min-width: 700px) {
+  .bookingTable {
+    width: 80%;
+  }
+  .bookingTable td.infosTd {
+    padding: 5px;
+  }
+
+  .bookingTable {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .bookingTable td:first-child,
+  .bookingTable th:first-child,
+  .bookingTable th:nth-child(2),
+  .bookingTable td:nth-child(2),
+  .bookingTable th:nth-child(3),
+  .bookingTable td:nth-child(3),
+  .bookingTable th:nth-child(4),
+  .bookingTable td:nth-child(4),
+  .bookingTable th:nth-child(5),
+  .bookingTable td:nth-child(5),
+  .bookingTable th:nth-child(6),
+  .bookingTable td:nth-child(6),
+  .bookingTable th:nth-child(7),
+  .bookingTable td:nth-child(7) {
+    width: 10%;
+    text-align: left;
+  }
+
+  .bookingTable th:nth-child(8),
+  .bookingTable td:nth-child(8) {
+    width: 5%;
+    text-align: center;
+  }
+
+  .alignStart td.infosTd,
+  .alignStart thead th:nth-child(3) {
+    text-align: start;
+  }
+}
+
+/**************************************************************************
+MAIN DYNAMIC LISTE WHISLIST USER : wishListUser et Wishlist.js
+***************************************************************************/
+/**************************************************************************
+CHECKBOX
+***************************************************************************/
+input[type='checkbox'].wishlist {
+  display: none;
+}
+
+input[type='checkbox'].wishlist + label:before {
+  font-family: var(--font-text);
+  font-size: 2.8rem;
+  content: '\2764';
+}
+
+input[type='checkbox'].wishlist:checked + label,
+input:checked[type='checkbox'] + label:before {
+  color: red;
+  content: '\2764';
+}
+
+input[type='checkbox'].wishlist:hover + label {
+  cursor: pointer;
+  transform: scale(1.3);
+}
+/*      CHECKBOX   2eme démarche      */
+
+/* input[type='checkbox'] {
+  display: none;
+}
+
+input[type='checkbox'] + label {
+  width: 15px;
+  height: 15px;
+  background-color: grey;
+  position: relative;
+  display: inline-block;
+  transform: rotate(45deg);
+  outline: none;
+}
+
+input[type='checkbox'] + label:before {
+  font-family: var(--font-text);
+  position: absolute;
+  content: '';
+  background-color: grey;
+  height: 50%;
+  width: 100%;
+  top: -45%;
+  left: 0;
+  border-radius: 75px 75px 0 0;
+}
+input[type='checkbox'] + label:after {
+  position: absolute;
+  content: '';
+  background-color: grey;
+  height: 50%;
+  width: 100%;
+  transform: rotate(-90deg);
+  top: 26%;
+  right: 72%;
+  border-radius: 75px 75px 0 0;
+}
+
+input[type='checkbox']:checked + label,
+input:checked[type='checkbox'] + label:before,
+input:checked[type='checkbox'] + label:after {
+  background-color: red;
+} */
+
+.deleteWishList {
+  display: block;
+  margin-left: auto;
+}
+
+/**************************************************************************
+LAYOUT ADMIN : layoutAdmin
+***************************************************************************/
+.welcome {
+  font-size: var(--size-title-3);
+  text-align: center;
+  margin: 20px;
+}
+
+.adminButtons {
+  margin: 100px 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 5px;
+}
+.adminButtons__button {
+  padding: 15px;
+  margin: 5px;
+  border: none;
+  background-color: var(--color-white);
+  box-shadow: 0px 3px 4px 1px var(--color-shadow);
+  border-radius: 2px;
+}
+
+.adminButtons__button:hover {
+  transform: scale(1.1);
+}
+
+.adminButtonsHome {
+  display: flex;
+  justify-content: center;
+  margin: auto 20px;
+}
+
+.informAdmin {
+  margin: 20px;
+  padding: 10px;
+  background-color: var(--color-white);
+  border-radius:10px;
+}
+
+.informAdmin h3 {
+  margin-top: 30px;
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 580px) {
+  .adminWelcome {
+    display: flex;
+    justify-content: space-between;
+  }
+  .adminButtons {
+    justify-content: space-between;
+    grid-template-columns: 23% 23% 23% 23%;
+    grid-gap: 10px;
+  }
+}
+
+/**************************************************************************
+MAIN DYNAMIC BORROW ADMIN : borrow
+***************************************************************************/
+/* Barre de recherche titre livre */
+.positionBorrow {
+  position: relative;
+}
+
+.formAdmin fieldset {
+  border: 1px solid black;
+}
+
+.formAdmin textarea {
+  height: 200px;
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 580px) {
+  .formAdmin {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/**************************************************************************
+MAIN DYNAMIC LISTE RESERVATIONS ET PRETS ADMIN :listBookingAdmin, listBorrowAdmin
+***************************************************************************/
+
+.adminTable td.infosTd {
+  padding: 5px 5px 5px 220px;
+}
+
+.adminTable td.infosTd::before {
+  width: 215px;
+}
+
+.adminTable tr:hover {
+  background-color: rgba(205, 205, 205, 1);
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 700px) {
+  .adminTable {
+    margin-top: 50px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .adminTable td.infosTd {
+    padding: 5px;
+  }
+
+  .adminTable td:first-child,
+  .adminTable th:first-child,
+  .adminTable th:nth-child(2),
+  .adminTable td:nth-child(2),
+  .adminTable th:nth-child(3),
+  .adminTable td:nth-child(3),
+  .adminTable th:nth-child(4),
+  .adminTable td:nth-child(4),
+  .adminTable th:nth-child(5),
+  .adminTable td:nth-child(5),
+  .adminTable th:nth-child(6),
+  .adminTable td:nth-child(6),
+  .adminTable th:nth-child(7),
+  .adminTable td:nth-child(7),
+  .adminTable th:nth-child(8),
+  .adminTable td:nth-child(8),
+  .adminTable th:nth-child(9),
+  .adminTable td:nth-child(9),
+  .adminTable th:nth-child(10),
+  .adminTable td:nth-child(10),
+  .adminTable th:nth-child(11),
+  .adminTable td:nth-child(11),
+  .adminTable th:nth-child(12),
+  .adminTable td:nth-child(12) {
+    width: 8%;
+    text-align: left;
+  }
+
+  .readerTable td:first-child,
+  .readerTable th:first-child,
+  .readerTable th:nth-child(2),
+  .readerTable td:nth-child(2),
+  .readerTable th:nth-child(3),
+  .readerTable td:nth-child(3),
+  .readerTable th:nth-child(4),
+  .readerTable td:nth-child(4),
+  .readerTable th:nth-child(5),
+  .readerTable td:nth-child(5),
+  .readerTable th:nth-child(6),
+  .readerTable td:nth-child(6) {
+    width: 15%;
+    text-align: left;
+  }
+
+  .readerTable th:nth-child(7),
+  .readerTable td:nth-child(7),
+  .readerTable th:nth-child(8),
+  .readerTable td:nth-child(8),
+  .readerTable th:nth-child(9),
+  .readerTable td:nth-child(9),
+  .bookingAdminTable th:nth-child(11),
+  .bookingAdminTable td:nth-child(11),
+  .bookingAdminTable th:nth-child(12),
+  .bookingAdminTable td:nth-child(12),
+  .borrowAdminTable th:nth-child(10),
+  .borrowAdminTable td:nth-child(10),
+  .delayAdminTable th:nth-child(9),
+  .delayAdminTable td:nth-child(9) {
+    width: 3%;
+    text-align: left;
+  }
+}
+
+/**************************************************************************
+MAIN DYNAMIC LISTE LECTEURS :listReaderAdmin
+***************************************************************************/
+.infosInput {
+  width: 100%;
+}
+
+.save {
+  display: block;
+  margin-left: auto;
+  border: none;
+  background-color: var(--color-white);
+}
+
+.fa-save {
+  font-size: var(--size-title-3);
+}
+.fa-save:hover {
+  transform: scale(1.1);
+}
+.center {
+  text-align: center;
+}
+
+/**************************************************************************
+MAIN DYNAMIC DETAILS LECTEUR :detailsUser
+***************************************************************************/
+
+.reader{
+  margin:30px 10px;
+  padding:10px;
+  background-color: var(--color-white);
+  border-radius: 10px;
+}
+
+.titleTable{
+  font-family: var(--font-titles);
+  font-size: var(--size-title-3);
+  display:inline-block;
+  margin:30px 0 5px;
+}
+
+@media screen and (min-width: 700px) {
+  .detailsAdminTable th:nth-child(8),
+  .detailsAdminTable td:nth-child(8){
+    width: 3%;
+    text-align: left;
+  }
+}
+
+/**************************************************************************
+MAIN DYNAMIC LISTE DES MESSAGES DE CONTACT ET LISTE DES EVENEMENTS: contactMessages.phtml, listEventsAdmin.phtml
+***************************************************************************/
+/* Tableau messages contact admin, resume events */
+td.infosTd.contactMessage, td.infosTd.eventResume {
+  text-align:justify;
+}
+
+/********RESPONSIVE************/
+@media screen and (min-width: 700px) {
+
+  .contactMessagesTable th:nth-child(3),
+  .contactMessagesTable td:nth-child(3),
+  .eventsTable th:nth-child(6),
+  .eventsTable td:nth-child(6){
+    width: 40%;
+    text-align: justify;
+  }
+  
+  .contactMessagesTable th:nth-child(6),
+  .contactMessagesTable td:nth-child(6),
+  .contactMessagesTable th:nth-child(7),
+  .contactMessagesTable td:nth-child(7){
+    width: 5%;
+    text-align: center;
+  }
+  
+  .eventsTable th:nth-child(7),
+  .eventsTable td:nth-child(7),
+  .eventsTable th:nth-child(8),
+  .eventsTable td:nth-child(8)
+  {
+    width: 7%;
+    text-align: center;
+  }
+}

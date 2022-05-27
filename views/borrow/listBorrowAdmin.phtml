@@ -1,0 +1,54 @@
+<h2>Liste des prêts</h2>
+<?php if(isset($messageAdmin)): ?>
+    <p class="message"><?= $messageAdmin ?></p>
+<?php endif; ?>
+<form method="POST" action="index.php?action=listBorrowAdmin" class="formBase formAdmin">
+        <fieldset>
+            <legend>Date de prêt</legend>
+            <p>
+                <label for="dateFirst">Date de début</label>
+                <input id="dateFirst" type="date" name="dateFirst"/>
+            </p>
+            <p>
+                <label for="dateSecond">Date de fin</label>
+                <input id="dateSecond" type="date" name="dateSecond"/>
+            </p>
+        </fieldset>
+        <button type="submit" class="buttonForm add">Rechercher</button>
+        <a href="index.php?action=admin" class="buttonForm cancel">Annuler</a>
+</form>
+<table class="tableBase adminTable borrowAdminTable">
+    <thead>
+        <tr>
+            <th>Date de prêt</th>
+            <th>Fin du prêt</th>
+            <th>Titre</th>
+            <th>Auteur(s)</th>
+            <th>Statut</th>
+            <th>Localisation</th>
+            <th>Nom Prénom</th>
+            <th>N° lecteur</th>
+            <th>Tél</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if(isset($prets)): ?>    
+    <?php foreach($prets as $pret): ?>
+        <tr class="row<?=$pret["id"] ?>">
+            <td data-label='Date de réservation' class="infosTd"><?= $pret["date_deb_pret"] ?></td>
+            <td data-label='Date de fin de réservation' class="infosTd"><?= $pret["date_fin_pret"] ?></td>
+            <td data-label='Titre' class="infosTd"><?= $pret["titre"] ?>, Tome <?= $pret["tome"] ?></td>
+            <td data-label='Auteur(s)' class="infosTd"><?= $pret["auteur"] ?></td>
+            <td data-label='Statut' class="infosTd"><?= $pret["statut"] ?></td>
+            <td data-label='Localisation interne' class="infosTd"><?= $pret["localisation_interne"] ?></td>
+            <td data-label='Nom Prénom' class="infosTd"><?= $pret["Nom"] ?> <?= $pret["Prenom"] ?></td>
+            <td data-label='Numéro étudiant/lecteur' class="infosTd"><?= $pret["numero_etu"] ?></td>
+            <td data-label='Téléphone' class="infosTd"><?= $pret["tel"] ?></td>
+            <td data-label='Email' class="infosTd"><a href="mailto: <?= $pret["email"] ?>"><i class="fa-solid fa-envelope"></i></a></td>
+        </tr>
+    <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+</table>    
+

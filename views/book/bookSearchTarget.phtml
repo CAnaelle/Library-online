@@ -1,0 +1,7 @@
+<?php if($books_research == 'null'): ?>
+    <p class="null">Aucun résultat trouvé avec la recherche simple</p>
+<?php else: ?>
+    <?php foreach($books_research as $book): ?>
+        <a href="index.php?action=searchBook&id=<?= $book['id']?>" class="optionSearch"><?= $book["titre"] ?></a>
+    <?php endforeach; ?>
+<?php endif; ?>

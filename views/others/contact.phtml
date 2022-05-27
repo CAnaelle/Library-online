@@ -1,0 +1,64 @@
+<h2>Contactez-nous</h2>
+<div class="contactus">
+    <p>Horaires: Ouvert du <span class="hours">lundi au samedi de 09h00 à 13h30 et 14h à 19h.</span></p>
+    <div class="contactus_email">
+       <a href="mailto: biblio@gmail.com">
+            <i class="fa-solid fa-envelope"></i>
+            <p>biblio@gmail.com</p>
+        </a>
+    </div>
+    <div class="contactus_tel">
+        <i class="fa-solid fa-mobile-screen"></i>
+        <p>06 00 00 00 00</p>
+    </div>
+    <p>Adresse: X rue de la Marine, 13000 MARSEILLE</p>
+</div>
+<div class="map">
+    <iframe class="map_mod" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19539.72903450715!2d5.374162500981245!3d43.28079495510191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9bf4344da5333%3A0x40819a5fd970220!2sMarseille!5e0!3m2!1sfr!2sfr!4v1647418894341!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy"></iframe>
+</div>
+    
+<form action="index.php?action=message" method="POST" class="formBase formContact">
+    <fieldset>
+        <legend>Contactez-nous</legend>
+             <?php if(isset($messageErrorForm)): ?>
+                <p class="message"><?= $messageErrorForm ?></p>
+            <?php endif; ?>
+            <div class="infoUser">
+                <p>
+                    <label for="nom" class="labelUser">Nom</label>
+                    <?php if(isset($errors['nom'])): ?>
+                        <p class="error"><?= $errors['nom'] ?></p>
+                    <?php endif; ?>
+                    <input id="nom" type="text" name="nom" required value="<?= $_POST['nom'] ??'' ?>"/> <!-- value permet de remettre les valeurs précedemment écrite en cas d'envoie non complet -->
+                </p>
+                <p>
+                    <label for="prenom" class="labelUser">Prénom</label>
+                    <?php if(isset($errors['prenom'])): ?>
+                        <p class="error"><?= $errors['prenom'] ?></p>
+                    <?php endif; ?>
+                    <input id="prenom" type="text" name="prenom" required value="<?= $_POST['prenom'] ??'' ?>"/>
+                </p>
+                    <p>
+                    <label for="tel" class="labelUser">Telephone</label>
+                    <input id="tel" type="tel" name="tel" required value="<?= $_POST['tel'] ??'' ?>"/>
+                </p>
+                <p>
+                    <label for="email" class="labelUser">Email</label>
+                    <?php if(isset($errors['email'])): ?>
+                        <p class="error"><?= $errors['email'] ?></p>
+                    <?php endif; ?>
+                    <input id="email" type="email" name="email" required value="<?= $_POST['email'] ??'' ?>"/>
+                </p>
+            </div>
+            <div class="messUser">
+                <p>
+                    <label for="sujet" class="labelUser">Sujet du message</label>
+                    <input id="sujet" type="text" name="sujet" required value="<?= $_POST['sujet'] ??'' ?>"/>
+                </p>
+                <label for="message" class="labelUser">Message</label>
+                <textarea name="message" class="messageArea" placeholder="Votre message"><?= $_POST['message'] ??'' ?></textarea>
+            </div>
+    </fieldset>
+    <button type="submit" class="buttonForm">Soumettre</button>
+    <button type="reset" class="buttonForm">Effacer</button>
+</form>

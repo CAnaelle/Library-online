@@ -1,0 +1,89 @@
+<div id="menuSearch" class="menuSearch">
+    <form method="GET" action="index.php" class="form">
+        <div class="position">
+            <input type="search" id="researchWords" name="bookList" class="inputSearch" autocomplete="off" placeholder="Rechercher un livre"/><!--autocomplete permet d'enlever les recherches passées qui s'affiche au-dessus de ma liste de recherche-->
+            <div id="targetResearch" class="result hide"></div>
+        </div>
+        <button type="submit" class="validate">Recherche avancée</button>
+    </form>
+</div>
+
+
+<div id="carrousel">
+    <div class="previous-btn"><i class="fa-solid fa-chevron-left"></i></div>
+    <div class="next-btn"><i class="fa-solid fa-chevron-right"></i></div>
+    <div class="items-container">
+        <div class="item">
+            <div class="item__img">
+                <img src="public/assets/images/biblio-1.jpg" alt="Bibliothèque">
+            </div>
+            <div class="item__description">
+                <div class="item__description__title">
+                    <h3>Visite de la bibliothèque</h3>
+                </div>
+                <div class="item__description__legend">
+                    <p>Nous sommes heureux de vous accueillir dans notre bibliothèque du lundi au vendredi de 9h à 13h30 et 14h à 19h.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item__img">
+                <img src="public/assets/images/biblio-2.jpg" alt="Bibliothèque">
+            </div>
+            <div class="item__description">
+                <div class="item__description__title">
+                    <h3>L'art de ranger</h3>
+                </div>
+                <div class="item__description__legend">
+                    <p>N'hésitez pas à prendre connaissance du lieu et de son réglement.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item__img">
+                <img src="public/assets/images/livres.jpg" alt="Livres">
+            </div>
+            <div class="item__description">
+                <div class="item__description__title">
+                    <h3>Atelier lecture</h3>
+                </div>
+                <div class="item__description__legend">
+                    <p>Venez nous rejoindre pour nos ateliers lecture! Discussions et débats!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="nav-dots"></div>
+
+<h2>Nouvelles acquisitions</h2>
+<div class="booksArticles">
+<?php foreach($books as $book) : ?>
+    <article class="bookArticle">
+        <?php if(!empty($book["image"])): ?>
+        <div class="imgBookHome"><a href="index.php?action=searchBook&id=<?= $book['id']?>"><img src="public/assets/images/<?= $book["image"] ?>" alt="<?= $book["image"] ?>" class="imgBookHome__img"/></a></div>
+        <?php endif; ?>
+        <div class="infoBook">
+            <h3><a href="index.php?action=searchBook&id=<?= $book['id']?>"><?= $book["titre"] ?></a></h3>
+            <?php if($book["tome"] != null): ?>
+                <p class="vol">Tome <?= $book["tome"] ?></p>
+            <?php endif; ?>
+            <p class="author"><?= $book["auteur"] ?></p>
+        </div>
+    </article>
+<?php endforeach; ?>
+</div>
+
+<h2>Suggestions par catégorie</h2>
+<div class="categoriesArticles">
+    <?php foreach($categories as $categorie) : ?>
+    <div class="categorieArticle">
+        <a href="index.php?action=suggestions&categorie=<?= $categorie['categorie']?>">
+            <figure>
+                <img src="public/assets/images/categories/<?= $categorie["categorie"] ?>.jpg" alt="<?= $categorie["categorie"] ?>">
+                <figcaption><span><?= $categorie["categorie"] ?></span></figcaption>
+            </figure>
+        </a>
+    </div>
+    <?php endforeach; ?>
+</div>

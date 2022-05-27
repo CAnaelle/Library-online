@@ -1,0 +1,22 @@
+<h2><i class="fa-solid fa-pen"></i> Modifier la notice d'un livre</h2>
+<form method="POST" action="index.php?action=editBook" enctype="multipart/form-data" class="formBase formAdmin">
+    <?php if(isset($messageAdmin)): ?>
+        <p id="messageAdminPhp" class="message center"><?= $messageAdmin ?></p>
+    <?php endif; ?>
+    <p id="messageAdmin" class="message infoBooking center"></p> <!-- pour afficher le message à partir de js -->
+    <fieldset>
+        <legend>Livre</legend>
+        <div>
+            <div class="positionBorrow">
+                <label for="titre">Titre</label>
+                <input id="titreBook" type="text" name="titre" autocomplete="off" placeholder="Rechercher un livre"/>
+                <div id="targetResearchAdmin" class="result hide"></div>
+            </div>
+        </div>
+        <div id="targetEditBook"></div>
+    </fieldset>
+    <button type="submit" class="buttonForm">Modifier</button>
+    <button type="reset" class="buttonForm">Effacer les champs</button>
+    <button type="button" class="buttonForm" id="deleteBookButton"><i class="fa-solid fa-trash"></i> Supprimer le livre du catalogue</button>
+    <a href="index.php?action=admin" class="buttonForm">Annuler</a>
+</form>

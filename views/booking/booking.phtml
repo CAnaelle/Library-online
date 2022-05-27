@@ -1,0 +1,32 @@
+<h2> Information sur votre réservation</h2>
+<?php if(isset($messageUser)): ?>
+    <p class="messageUser infoBooking"><?= $messageUser ?></p>
+<?php endif; ?>
+<?php if(isset($reservation) && ($reservation)): ?>
+    <p class="infoBooking">Le livre est réservé du <span><?= $dateDebR ?> au <?= $dateFinR ?></span>.</p>
+    <p class="infoBooking">Vous avez donc 15 jours à partir de la date de début de la réservation pour venir le récupérer, après ce délais le livre sera remis à disposition du public</p>
+<?php endif; ?>
+<table class="tableBase bookingTable alignStart">
+    <caption>Vos dernières réservations</caption>
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Tome</th>
+            <th>Date de réservation</th>
+            <th>Date de fin de réservation</th>
+        </tr>
+    </thead>
+    <tbody>
+<?php if(isset($someBookingByIdUser)): ?>    
+    <?php foreach($someBookingByIdUser as $booking): ?>
+        <tr>
+            <td data-label='Titre' class="infosTd"><?= $booking["titre"] ?></td>
+            <td data-label='Tome' class="infosTd"><?= $booking["tome"] ?></td>
+            <td data-label='Date de réservation' class="infosTd"><?= $booking["date_deb_reserv"] ?></td>
+            <td data-label='Date de fin de réservation' class="infosTd"><?= $booking["date_fin_reserv"] ?></td>
+        </tr>
+    <?php endforeach; ?>
+    <?php endif; ?>
+     </tbody>
+</table>  
+

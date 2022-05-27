@@ -1,0 +1,62 @@
+<h2>Liste des réservations</h2>
+<?php if(isset($messageAdmin)): ?>
+    <p class="message"><?= $messageAdmin ?></p>
+<?php endif; ?>
+<form method="POST" action="index.php?action=listBookingAdmin" class="formBase formAdmin">
+        <fieldset>
+            <legend>Date de réservation</legend>
+            <p>
+                <label for="dateFirst">Date de début</label>
+                <input id="dateFirst" type="date" name="dateFirst"/>
+            </p>
+            <p>
+                <label for="dateSecond">Date de fin</label>
+                <input id="dateSecond" type="date" name="dateSecond"/>
+            </p>
+        </fieldset>
+        <button type="submit" class="buttonForm add">Rechercher</button>
+        <a href="index.php?action=admin" class="buttonForm cancel">Annuler</a>
+</form>
+<table class="tableBase adminTable bookingAdminTable">
+    <thead>
+        <tr>
+            <th>Date d'ajout de la réservation</th>
+            <th>Date de début de réservation</th>
+            <th>Fin de réservation</th>
+            <th>Titre</th>
+            <th>Auteur(s)</th>
+            <th>Statut</th>
+            <th>Localisation</th>
+            <th>Nom Prénom</th>
+            <th>N° lecteur</th>
+            <th>Tél</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if(isset($reservations)): ?>    
+    <?php foreach($reservations as $reservation): ?>
+        <tr class="row<?=$reservation["id"] ?>">
+            <td data-label='Date ajout de réservation' class="infosTd"><?= $reservation["date_ajout"] ?></td>
+            <td data-label='Date début de réservation' class="infosTd"><?= $reservation["date_deb_reserv"] ?></td>
+            <td data-label='Date fin de réservation' class="infosTd"><?= $reservation["date_fin_reserv"] ?></td>
+            <td data-label='Titre' class="infosTd"><?= $reservation["titre"] ?>, Tome <?= $reservation["tome"] ?></td>
+            <td data-label='Auteur(s)' class="infosTd"><?= $reservation["auteur"] ?></td>
+            <td data-label='Statut' class="infosTd"><?= $reservation["statut"] ?></td>
+            <td data-label='Localisation interne' class="infosTd"><?= $reservation["localisation_interne"] ?></td>
+            <td data-label='Nom Prénom' class="infosTd"><?= $reservation["Nom"] ?> <?= $reservation["Prenom"] ?></td>
+            <td data-label='Numéro étudiant/lecteur' class="infosTd"><?= $reservation["numero_etu"] ?></td>
+            <td data-label='Téléphone' class="infosTd"><?= $reservation["tel"] ?></td>
+            <td data-label='Email' class="infosTd"><a href="mailto: <?= $reservation["email"] ?>"><i class="fa-solid fa-envelope"></i></a></td>
+            <td data-label='' class="infosTd">
+                <span class="deleteBooking" data-idbook ="<?= $reservation["id_book"]?>" data-idreserv="<?=$reservation["id"] ?>">
+                <i class="fa-solid fa-xmark"></i>
+                </span>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+</table>    
+

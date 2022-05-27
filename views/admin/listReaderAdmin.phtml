@@ -1,0 +1,61 @@
+<h2>Liste des lecteurs</h2>
+<?php if(isset($messageAdmin)): ?>
+    <p id="test" class="message center"><?= $messageAdmin ?></p>
+<?php endif; ?>
+<p id="messageAdmin" class="message infoBooking center"></p> <!-- pour afficher le message à partir de js -->
+<form method="POST" action="index.php?action=listReaderAdmin" class="formBase formAdmin">
+        <fieldset>
+            <legend>Rechercher par le nom</legend>
+            <p>
+                <label for="name">Nom</label>
+                <input id="name" type="text" name="name"/>
+            </p>
+        </fieldset>
+        <button type="submit" class="buttonForm add">Rechercher</button>
+        <a href="index.php?action=admin" class="buttonForm cancel">Annuler</a>
+</form>
+<table class="tableBase adminTable readerTable">
+    <thead>
+        <tr>
+            <th>Civilité</th>
+            <th>Nom Prénom</th>
+            <th>N° lecteur</th>
+            <th>Date naissance</th>
+            <th>Tél</th>
+            <th>Adresse</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><form method="post" action="index.php?action=editUser" id="targetEditUser">
+            </form></td>
+        </tr>
+    <?php if(isset($users)): ?>    
+    <?php foreach($users as $user): ?>
+        <tr class="row<?=$user["id"] ?>">
+            <td data-label='Civilité' class="infosTd"><?= $user["civilite"] ?></td>
+            <td data-label='Nom Prénom' class="infosTd bold"><a href="index.php?action=userDetails&idUser=<?=$user["id"] ?>"><?= $user["Nom"] ?> <?= $user["Prenom"] ?></a></td>
+            <td data-label='Numéro étudiant/lecteur' class="infosTd"><?= $user["numero_etu"] ?></td>
+            <td data-label='Date de naissance' class="infosTd"><?= $user["date_naissance"] ?></td>
+            <td data-label='Téléphone' class="infosTd"><?= $user["tel"] ?></td>
+            <td data-label='Adresse' class="infosTd"><?= $user["adresse"] ?> <?= $user["code_postal"] ?> <?= $user["Ville"] ?></td>
+            <td data-label='Email' class="infosTd"><a href="mailto: <?= $user["email"] ?>"><i class="fa-solid fa-envelope"></i></a></td>
+            <td data-label='' class="infosTd">
+                <span class="editUser" data-iduser="<?=$user["id"] ?>">
+                <i class="fa-solid fa-pen"></i>
+                </span>
+            </td>
+            <td data-label='' class="infosTd">
+                <span class="deleteUser" data-iduser ="<?= $user["id"]?>">
+                <i class="fa-solid fa-xmark"></i>
+                </span>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+</table>    
+

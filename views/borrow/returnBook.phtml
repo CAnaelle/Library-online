@@ -1,0 +1,39 @@
+<h2><i class="fa-solid fa-arrow-rotate-right"></i> Remettre un livre en circulation - retour de prêt</h2>
+<form method="POST" action="index.php?action=returnBook" class="formBase formAdmin">
+<?php if(isset($messageAdmin)): ?>
+    <p class="message"><?= $messageAdmin ?></p>
+<?php endif; ?>
+    <fieldset>
+        <legend>Emprunteur</legend>
+        <?php if(isset($errors['user'])): ?>
+            <p class="error"><?= $errors['user'] ?></p>
+        <?php endif; ?>
+        <p>
+            <label for="name">Nom</label>
+            <input id="name" type="text" name="name" required/>
+
+        </p>
+        <p>
+            <label for="number">N° étudiant/lecteur</label>
+            <input id="number" type="number" name="number" required/>
+        </p>
+    </fieldset>
+    <fieldset>
+        <legend>Livre</legend>
+        <?php if(isset($errors['book'])): ?>
+            <p class="error"><?= $errors['book'] ?></p>
+        <?php endif; ?>
+        <div class="positionBorrow">
+            <label for="titre">Titre</label>
+            <input id="titreBook" type="text" name="titre" autocomplete="off" required/>
+            <div id="targetResearchAdmin" class="result hide"></div>
+        </div>
+         <p>
+            <label for="tome">Tome</label>
+            <input id="tome" type="number" name="tome"/>
+        </p>
+    </fieldset>
+    <button type="submit" class="buttonForm add">Soumettre</button>
+    <button type="reset" class="buttonForm erase">Effacer</button>
+    <a href="index.php?action=admin" class="buttonForm cancel">Annuler</a>
+</form>

@@ -1,0 +1,148 @@
+
+<h2><i class="fa-solid fa-plus"></i> Ajout d'un livre dans le catalogue</h2>
+<form method="POST" action="index.php?action=addBook" enctype="multipart/form-data" class="formBase formAdmin">
+    <?php if(isset($messageAdmin)): ?>
+        <p class="message"><?= $messageAdmin ?></p>
+    <?php endif; ?>
+    <fieldset>
+        <legend>Caractéristiques</legend>
+        <p>
+            <label for="isbn">ISBN</label>
+            <?php if(isset($errors['isbn'])): ?>
+                <p class="message"><?= $errors['isbn'] ?></p>
+            <?php endif; ?>
+            <input id="isbn" type="text" name="isbn" required value="<?= $_POST['isbn'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="auteur">Auteur</label>
+            <?php if(isset($errors['auteur'])): ?>
+                <p class="message"><?= $errors['auteur'] ?></p>
+            <?php endif; ?>
+            <input id="auteur" type="text" name="auteur" required value="<?= $_POST['auteur'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="titre">Titre</label>
+            <?php if(isset($errors['titre'])): ?>
+                <p class="message"><?= $errors['titre'] ?></p>
+            <?php endif; ?>
+            <input id="titre" type="text" name="titre" required value="<?= $_POST['titre'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="editeur">Editeur</label>
+            <?php if(isset($errors['editeur'])): ?>
+                <p class="message"><?= $errors['editeur'] ?></p>
+            <?php endif; ?>
+            <input id="editeur" type="text" name="editeur" required value="<?= $_POST['editeur'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="date">Date de parution</label>
+            <?php if(isset($errors['date'])): ?>
+                <p class="message"><?= $errors['date'] ?></p>
+            <?php endif; ?>
+            <input id="date" type="date" name="date" required value="<?= $_POST['date'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="collection">Collection</label>
+            <input id="collection" type="text" name="collection" value="<?= $_POST['collection'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="genre">Genre</label>
+            <?php if(isset($errors['genre'])): ?>
+                <p class="message"><?= $errors['genre'] ?></p>
+            <?php endif; ?>
+            <input id="genre" type="text" name="genre" required value="<?= $_POST['genre'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="tome">Tome</label>
+            <?php if(isset($errors['tome'])): ?>
+                <p class="message"><?= $errors['tome'] ?></p>
+            <?php endif; ?>
+            <input id="tome" type="number" name="tome" value="<?= $_POST['tome'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="nombre">Nombre de pages</label>
+            <?php if(isset($errors['nombre'])): ?>
+                <p class="message"><?= $errors['nombre'] ?></p>
+            <?php endif; ?>
+            <input id="nombre" type="number" name="nombre" required value="<?= $_POST['nombre'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="format">Format</label>
+            <?php if(isset($errors['format'])): ?>
+                <p class="message"><?= $errors['format'] ?></p>
+            <?php endif; ?>
+            <input id="format" type="text" name="format" required value="<?= $_POST['format'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="resume">Résumé</label>
+            <?php if(isset($errors['resume'])): ?>
+                <p class="message"><?= $errors['resume'] ?></p>
+            <?php endif; ?>
+            <textarea id="resume" name="resume" required><?= $_POST['resume'] ??'' ?></textarea>
+        </p>
+        <p>
+            <label for="cle">Mots-clés (séparés par un espace)</label>
+            <?php if(isset($errors['cle'])): ?>
+                <p class="message"><?= $errors['cle'] ?></p>
+            <?php endif; ?>
+            <textarea id="cle" name="cle" required><?= $_POST['cle'] ??'' ?></textarea>
+        </p>
+        <p>
+            <label for="cote">Cote</label>
+            <?php if(isset($errors['cote'])): ?>
+                <p class="message"><?= $errors['cote'] ?></p>
+            <?php endif; ?>
+            <input id="cote" type="text" name="cote" required value="<?= $_POST['cote'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="localisation">Localisation interne</label>
+            <?php if(isset($errors['localisation'])): ?>
+                <p class="message"><?= $errors['localisation'] ?></p>
+            <?php endif; ?>
+            <input id="localisation" type="text" name="localisation" required value="<?= $_POST['localisation'] ??'' ?>"/>
+        </p>
+        <p>
+            <label for="categorie">Catégorie</label>
+            <?php if(isset($errors['categorie'])): ?>
+                <p class="message"><?= $errors['categorie'] ?></p>
+            <?php endif; ?>
+            <select name="categorie" id="categorie">
+                <option selected disabled>Choississez une catégorie</option>
+                <option value="action">action</option>
+                <option value="comédie">comédie</option>
+                <option value="cuisine">cuisine</option>
+                <option value="documentaire">documentaire</option>
+                <option value="fantastique">fantastique</option>
+                <option value="historique">historique</option>
+                <option value="horreur">horreur</option>
+                <option value="poésie">poésie</option>
+                <option value="policier">policier</option>
+                <option value="romance">romance</option>
+                <option value="science-fiction">science-fiction</option>
+                <option value="théâtre">théâtre</option>
+            </select>
+        </p>
+         <p>
+            <label for="statut">Statut</label>
+            <?php if(isset($errors['statut'])): ?>
+                <p class="message"><?= $errors['statut'] ?></p>
+            <?php endif; ?>
+            <select name="statut" id="statut">
+                <option selected disabled>Choississez un statut</option>
+                <option value="consultation sur place">consultation sur place</option>
+                <option value="disponible">disponible</option>
+                <option value="en prêt">en prêt</option>
+                <option value="réservé">réservé</option>
+            </select>
+        </p>
+        <p>
+            <label for="image">Image</label>
+            <?php if(isset($errors['image'])): ?>
+                <p class="message"><?= $errors['image'] ?></p>
+            <?php endif; ?>
+            <input id="image" type="file" name="image" accept=".png, .jpg, .jpeg"/>
+        </p>
+    </fieldset>
+    <button type="submit" class="buttonForm add">Ajouter</button>
+    <a href="index.php?action=admin" class="buttonForm cancel">Annuler</a>
+</form>

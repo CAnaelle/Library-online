@@ -1,0 +1,50 @@
+<h2>Liste des évènements</h2>
+<?php if(isset($messageAdmin)): ?>
+    <p id="test" class="message center"><?= $messageAdmin ?></p>
+<?php endif; ?>
+<p id="messageAdmin" class="message infoBooking center"></p> <!-- pour afficher le message à partir de js -->
+<form method="POST" action="index.php?action=eventsAdmin" class="formBase formAdmin">
+        <fieldset>
+            <legend>Rechercher par le titre</legend>
+            <p>
+                <label for="title">Titre</label>
+                <input id="title" type="text" name="title"/>
+            </p>
+        </fieldset>
+        <button type="submit" class="buttonForm add">Rechercher</button>
+        <a href="index.php?action=admin" class="buttonForm cancel">Annuler</a>
+</form>
+<table class="tableBase adminTable eventsTable">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Titre</th>
+            <th>Jour</th>
+            <th>Date de début</th>
+            <th>Date de fin</th>
+            <th>Résumé</th>
+            <th>Nombre</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if(isset($evenements)): ?>    
+    <?php foreach($evenements as $evenement): ?>
+        <tr class="row<?=$evenement["id"] ?>">
+            <td data-label='Image' class="infosTd"><img src="public/assets/images/evenements/<?= $evenement["image"] ?>" alt="<?= $evenement["image"] ?>"></td>
+            <td data-label='Titre' class="infosTd"><?= $evenement["Titre"] ?></td>
+            <td data-label='Jour' class="infosTd"><?= $evenement["Jour"] ?></td>
+            <td data-label='Date de début' class="infosTd"><?= $evenement["date_deb"] ?> <?= $evenement["heure_deb"] ?></td>
+            <td data-label='Date de fin' class="infosTd"><?= $evenement["date_fin"] ?> <?= $evenement["heure_fin"] ?></td>
+            <td data-label='Résumé' class="infosTd eventResume"><?= $evenement["resume"] ?></td>
+            <td data-label='Nombre' class="infosTd"><?= $evenement["nbre_place"] ?></td>
+            <td data-label='' class="infosTd">
+                <span class="deleteEvent" data-idevent="<?=$evenement["id"] ?>">
+                <i class="fa-solid fa-xmark"></i>
+                </span>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+</table>

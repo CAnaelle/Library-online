@@ -1,0 +1,47 @@
+<div id="menuSearch" class="menuSearch">
+    <form method="GET" action="index.php" class="form">
+        <div class="position">
+            <input type="search" id="researchWords" name="bookList" class="inputSearch" autocomplete="off" placeholder="Rechercher un livre"/><!--autocomplete permet d'enlever les recherches passées qui s'affiche au-dessus de ma liste de recherche-->
+            <div id="targetResearch" class="result hide"></div>
+        </div>
+        <button type="submit" class="validate">Recherche avancée</button>
+    </form>
+</div>
+<h2>Suggestions selon la catégorie <?= $categorie ?></h2>
+<div class="listBook"> 
+<?php if(isset($messageUser)): ?>
+    <p id="messageUser infoBooking" class="message"><?= $messageUser ?></p>
+<?php endif; ?>
+<table class="tableBase listBookTable">
+    <thead>
+        <tr>
+            <th>En savoir plus</th>
+            <th>Titre</th>
+            <th>Tome</th>
+            <th>Auteur(s)</th>
+            <th>Résumé</th>
+            <th>Genre</th>
+            <th>Réserver</th>
+            <?php if($userController -> is_connect()):?>
+            <th>Favoris</th>
+            <?php endif; ?>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($books as $book): ?>
+        <tr>
+            <td data-label='' class="infosTd"> <a href="index.php?action=searchBook&id=<?= $book['id']?>"><img src="public/assets/images/<?= $book["image"] ?>" alt="<?= $book["image"] ?>"></a></td>
+            <td data-label='Titre' class="infosTd"><?= $book["titre"] ?></td>
+            <td data-label='Tome' class="infosTd"><?=  $book["tome"] ?></td>
+            <td data-label='Auteur(s)' class="infosTd"><?= $book["auteur"] ?></td>
+            <td data-label='Résumé' class="infosTd resume"><?= $book["resume"] ?> ...</td>
+            <td data-label='Genre' class="infosTd"><?= $book["genre"] ?></td>
+            <td data-label='Réserver' class="infosTd"><a href="index.php?action=reserve&book=<?= $book['id']?>"><i class="fa-solid fa-clock"></i></a></td>
+            <?php if($userController -> is_connect()):?>
+            <td data-label='Favoris' class="infosTd"><input type="checkbox" name="wishlistArray" id="<?= $book['id']?>" value="<?= $book['id']?>" class="wishlist"/><label for="<?= $book['id']?>"></label></td>
+            <?php endif; ?>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+</div>   
