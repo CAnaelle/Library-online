@@ -6,6 +6,8 @@
 
 Mon projet est un site vitrine d'une bibliothèque en ligne. Il s'agit de la version finale pour le rendu. Par la suite, d'autres fonctionnalités seront ajoutées (citées à la fin du document).
 
+Si vous êtes intéressé pour voir le site en ligne ainsi que le côté utilisateur et admin, veuillez me contacter via mon profil Linkedin (https://www.linkedin.com/in/anaelle-cussac/).
+
 # En tant que SIMPLE UTILISATEUR (SANS COMPTE):
 
 On peut chercher un livre qui se trouve dans la base de données (BDD) avec la barre de recherche, voir les dernières acquisitions de la bibliothèque et avoir des suggestions de livres en fonction de la catégorie. Une page contact est également disponible et contient des informations sur l'accessibilité et les horaires de la structure. Elle permet aussi l'envoi de messages/demandes. Deux autres pages simples sont accessibles : une page évènements où l'on peut visualiser les évènements à venir et une page infos pratiques. Deux pages mentions légales et politiques de confidentialité sont accessibles en bas du site.
