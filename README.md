@@ -14,7 +14,7 @@ On peut chercher un livre qui se trouve dans la base de données (BDD) avec la b
 
 La barre de recherche permet 2 types de recherches : une RECHERCHE SIMPLE qui va proposer 5 résultats correspondant le plus à ce que l'utilisateur à taper (lorsque l'on clique sur un des résultats affichés sous la barre de recherche on accède directement à la fiche descriptive du livre), et une RECHERCHE AVANCÉE qui va proposer une liste de livres (20) en fonction de l'entrée de l'utilisateur (en cliquant sur entrée ou le bouton recherche avancée). Cette recherche prend en compte chaque mot entré dans le champs de recherche (une requête est faite dans la BDD pour chaque mot). La barre de recherche fait le lien entre la ou les valeurs entrées dans le champs de recherche et le titre, les mots-clés ou l'auteur.
 
-Pour créer un compte -> en haut à droite le bouton connexion : celui-ci amène à une page pour se connecter. On peut un compte en cliquant sur 'Créer un compte' en bas du formulaire de connexion.
+Pour créer un compte -> en haut à droite le bouton connexion : celui-ci amène à une page pour se connecter. On peut créer un compte en cliquant sur 'Créer un compte' en bas du formulaire de connexion.
 
 Après avoir créé un compte, on s'identifie.
 
@@ -22,17 +22,17 @@ Après avoir créé un compte, on s'identifie.
 
 Des fonctionnalités apparraissent (onglets dans la nav et boutons tels que 'réserver' et checkbox en coeur pour ajouter aux favoris).
 
-    1- L'utilisateur avec compte a donc la possibilité de RÉSERVER un livre. Différents messages seront affichés en fonction du statut actuel du livre (une vérification du statut est donc faite avec la BDD avant la réservation). Après avoir réservé un livre (celui-ci sera mis de côté par la structure), l'utisateur aura 15 jours pour venir le récupérer (fonctionnalité à venir qui remettra automatiquement le livre en statut disponible au bout de 15 jours). L'utilisateur avec compte possède donc un onglet 'Mes réservations' où il peut retrouver toutes ces réservations. Il peut également supprimer ses réservations.
+- L'utilisateur avec compte a donc la possibilité de RÉSERVER un livre. Différents messages seront affichés en fonction du statut actuel du livre (une vérification du statut est donc faite avec la BDD avant la réservation). Après avoir réservé un livre (celui-ci sera mis de côté par la structure), l'utisateur aura 15 jours pour venir le récupérer (fonctionnalité à venir qui remettra automatiquement le livre en statut disponible au bout de 15 jours). L'utilisateur avec compte possède donc un onglet 'Mes réservations' où il peut retrouver toutes ces réservations. Il peut également supprimer ses réservations.
 
-    2-L'utilisateur avec compte possède aussi un onglet 'Mes prêts' où il peut retrouver tous les prêts en cours et les informations avec la date de fin du prêt. Le prêt est une action qui doit être faite sur place, et donc seul l'admin a la possibilité d'ajouter et de supprimer un prêt (autrement dit de remettre en circulation le livre après qu'il ait été rendu).
+- L'utilisateur avec compte possède aussi un onglet 'Mes prêts' où il peut retrouver tous les prêts en cours et les informations avec la date de fin du prêt. Le prêt est une action qui doit être faite sur place, et donc seul l'admin a la possibilité d'ajouter et de supprimer un prêt (autrement dit de remettre en circulation le livre après qu'il ait été rendu).
 
-    3-L'utilisateur avec compte possède aussi un onglet 'Mes coups de coeur' où il peut retrouver tous ces livres favoris. Pour ajouter un livre dans ces favoris il suffit qu'il recherche le livre en question et en haut à droite se trouve un coeur noir sur lequel il peut cliquer. Une fois cliqué, le coeur sera rouge et donc accessible dans la liste des favoris. Cette fonctionnalité est basée sur le localStorage.
+- L'utilisateur avec compte possède aussi un onglet 'Mes coups de coeur' où il peut retrouver tous ces livres favoris. Pour ajouter un livre dans ces favoris il suffit qu'il recherche le livre en question et en haut à droite se trouve un coeur noir sur lequel il peut cliquer. Une fois cliqué, le coeur sera rouge et donc accessible dans la liste des favoris. Cette fonctionnalité est basée sur le localStorage.
 
 # En tant qu'ADMIN:
 
-Il n'y a pas de bouton pour se connecter. L'arrivée sur la page de connexion de l'admin se fait via une url (action=admin).
+Il n'y a pas de bouton pour se connecter. L'arrivée sur la page de connexion de l'admin se fait via une url.
 
-    1-On arrive sur la page accueil admin où l'on dispose de plusieurs boutons pour réaliser différentes actions :
+- On arrive sur la page accueil admin où l'on dispose de plusieurs boutons pour réaliser différentes actions :
         -ajouter un prêt,
         -supprimer un prêt ou autrement dit remettre un livre en circulation,
         -ajouter un livre dans la BDD,
@@ -45,7 +45,7 @@ Il n'y a pas de bouton pour se connecter. L'arrivée sur la page de connexion de
         -afficher la liste des évènements et possibilité de les supprimer,
         -afficher la liste des messages de contact et les supprimer.
 
-    2-Sur la page d'accueil admin, s'affiche aussi le nombre de réservations qui a été faite la veille (afin que l'admin puisse mettre de côté les livres réservés)
+- Sur la page d'accueil admin, s'affiche aussi le nombre de réservations qui a été faite la veille (afin que l'admin puisse mettre de côté les livres réservés)
 
 # FUTURES FONCTIONNALITÉS
 
